@@ -1,0 +1,14 @@
+[00:00:05.836] Server  ERROR   SyntaxError: Expected double-quoted property name in JSON at position 43094 (line 1222 column 1)
+[00:00:09.115] Server  LOG     ✓ Ready in 7s
+[00:00:12.948] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:45.197] Server  LOG     ✓ Compiled in 3s
+[00:01:53.471] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:55.748] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:37.452] Server  LOG     ✓ Compiled in 1375ms
+[00:09:05.679] Server  LOG     ✓ Compiled in 113ms
+[00:10:26.408] Server  LOG     ✓ Compiled in 160ms
+[00:10:32.759] Server  LOG     ✓ Compiled in 104ms
+[00:11:52.412] Server  LOG     ✓ Compiled in 334ms
+[00:12:11.525] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:13:29.371] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:14:14.135] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
