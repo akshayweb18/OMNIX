@@ -1,10 +1,18 @@
-[00:00:03.677] Server  LOG     ✓ Ready in 2.4s
-[00:00:27.726] Server  LOG     ○ Compiling / ...
-[00:00:30.174] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:41.305] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:52.813] Server  LOG     ○ Compiling /chat ...
-[00:01:55.331] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:58.863] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:01.909] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:04.420] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:16:55.125] Server  LOG       Reload env: .env.local
+[00:00:03.648] Server  WARN    ⚠ Turbopack's filesystem cache has been deleted because we previously detected an internal error in Turbopack. Builds or page loads may be slower as a result.
+[00:00:05.137] Server  LOG     ✓ Ready in 3.6s
+[00:38:51.194] Server  ERROR   ⨯ TurbopackInternalError: range start index 325737109 out of range for slice of length 1242330
+[00:38:51.257] Server  ERROR   TurbopackInternalError: Failed to restore task data (corrupted database or bug): Meta for TaskId { id: 159512 } transient (TaskId 159512))
+
+Debug info:
+- Failed to restore task data (corrupted database or bug): Meta for TaskId { id: 159512 } transient (TaskId 159512))
+  
+  Caused by:
+      0: Looking up data for TaskId 159512 from database failed
+      1: Unable to open static sorted file referenced from 00000815.meta
+      2: Unable to open static sorted file 00000810.sst
+      3: The system cannot find the file specified. (os error 2)
+[00:38:51.323] Server  ERROR   ⨯ TurbopackInternalError: range start index 325737109 out of range for slice of length 1242330
+[00:38:51.344] Server  ERROR   TurbopackInternalError: range start index 325737109 out of range for slice of length 1242330
+[00:00:20.767] Server  LOG     ○ Compiling / ...
+[00:00:28.913] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:35.985] Server  ERROR   FULL ERROR: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent: [403 Forbidden] Your API key was reported as leaked. Please use another API key.
