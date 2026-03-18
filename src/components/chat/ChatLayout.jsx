@@ -12,6 +12,7 @@ export default function ChatLayout() {
   const { messages, sendMessage, loading, resetChat } = useChat();
   const { speak } = useSpeech();
   const bottomRef = useRef(null);
+  const scrollRef = useRef(null);
 
   const [activeChatId, setActiveChatId] = useState(1);
   const [recentChats] = useState([
@@ -36,9 +37,21 @@ export default function ChatLayout() {
     };
   }, [messages, speak]);
 
-  // Auto-scroll to bottom
+  // Auto-scroll to bottom with a "near-bottom" check so user's scroll
+  // position isn't forcefully changed if they're reading earlier messages.
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = scrollRef.current;
+    if (!el) {
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+
+    const distanceFromBottom = el.scrollHeight - el.clientHeight - el.scrollTop;
+    const shouldScroll = distanceFromBottom < 180; // px threshold to auto-scroll
+
+    if (shouldScroll) {
+      el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    }
   }, [messages, loading]);
 
   return (
@@ -153,7 +166,7 @@ export default function ChatLayout() {
             />
 
             <div className="flex-1 overflow-hidden">
-              <div className="h-full overflow-y-auto pb-2">
+              <div ref={scrollRef} className="h-full overflow-y-auto pb-2" style={{ scrollBehavior: 'smooth' }}>
                 <div className="w-full space-y-6 px-4 lg:px-6">
                   {messages.length === 0 && !loading && (
                     <div className="flex flex-col items-center justify-center text-center mt-14">

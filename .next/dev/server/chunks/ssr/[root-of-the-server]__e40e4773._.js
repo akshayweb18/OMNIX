@@ -622,7 +622,7 @@ function ChatMessage({ message }) {
         setTimeout(()=>setCopied(false), 1500);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: `w-full flex ${isUser ? "justify-end" : "justify-start"} animate-fadeIn`,
+        className: `w-full flex ${isUser ? "justify-end" : "justify-start"} animate-chat-entry`,
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: `flex items-start gap-4 ${isUser ? "flex-row-reverse" : ""}`,
             children: [
@@ -635,7 +635,7 @@ function ChatMessage({ message }) {
                     children: isUser ? "U" : "AI"
                 }, void 0, false, {
                     fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                    lineNumber: 29,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -645,7 +645,7 @@ function ChatMessage({ message }) {
                             className: `
               px-5 py-3 rounded-lg text-[15px] leading-relaxed
               transition-all duration-300
-              ${isUser ? "bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 text-white rounded-2xl shadow-lg" : "bg-white/10 text-white border border-white/10 shadow-[0_15px_35px_-20px_rgba(99,102,241,0.2)] backdrop-blur-xl ring-1 ring-purple-500/20 hover:bg-white/15 hover:shadow-[0_18px_40px_-18px_rgba(99,102,241,0.25)] transition"}
+              ${isUser ? "bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 text-white rounded-2xl shadow-lg transform-gpu" : "assistant-bubble-gradient text-white border-transparent backdrop-blur-xl ring-1 ring-purple-500/12 hover:shadow-[0_18px_40px_-18px_rgba(99,102,241,0.25)] transition"}
             `,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$react$2d$markdown$40$10$2e$1$2e$0_$40$types$2b$react$40$19$2e$2$2e$14_react$40$19$2e$2$2e$3$2f$node_modules$2f$react$2d$markdown$2f$lib$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__Markdown__as__default$3e$__["default"], {
                                 remarkPlugins: [
@@ -657,7 +657,7 @@ function ChatMessage({ message }) {
                                             children: children
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                                            lineNumber: 62,
+                                            lineNumber: 60,
                                             columnNumber: 19
                                         }, void 0),
                                     ul: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -665,7 +665,7 @@ function ChatMessage({ message }) {
                                             children: children
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                                            lineNumber: 65,
+                                            lineNumber: 63,
                                             columnNumber: 19
                                         }, void 0),
                                     ol: ({ children })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ol", {
@@ -673,7 +673,7 @@ function ChatMessage({ message }) {
                                             children: children
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                                            lineNumber: 70,
+                                            lineNumber: 68,
                                             columnNumber: 19
                                         }, void 0),
                                     code ({ inline, children }) {
@@ -682,7 +682,7 @@ function ChatMessage({ message }) {
                                             children: children
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                                            lineNumber: 76,
+                                            lineNumber: 74,
                                             columnNumber: 21
                                         }, void 0) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("pre", {
                                             className: "bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm my-3",
@@ -690,12 +690,12 @@ function ChatMessage({ message }) {
                                                 children: children
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                                                lineNumber: 81,
+                                                lineNumber: 79,
                                                 columnNumber: 23
                                             }, void 0)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                                            lineNumber: 80,
+                                            lineNumber: 78,
                                             columnNumber: 21
                                         }, void 0);
                                     },
@@ -704,40 +704,40 @@ function ChatMessage({ message }) {
                                             children: children
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                                            lineNumber: 86,
+                                            lineNumber: 84,
                                             columnNumber: 19
                                         }, void 0)
                                 },
                                 children: message.content
                             }, void 0, false, {
                                 fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                                lineNumber: 58,
+                                lineNumber: 56,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                            lineNumber: 47,
+                            lineNumber: 45,
                             columnNumber: 11
                         }, this),
                         !isUser && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: handleCopy,
-                            className: "absolute -bottom-6 left-2 text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:text-gray-700",
+                            className: "absolute -bottom-6 left-2 text-xs text-gray-200/80 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:text-white",
                             children: copied ? "Copied ✓" : "Copy"
                         }, void 0, false, {
                             fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                            lineNumber: 98,
+                            lineNumber: 96,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/chat/ChatMessage.jsx",
-                    lineNumber: 44,
+                    lineNumber: 42,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/chat/ChatMessage.jsx",
-            lineNumber: 23,
+            lineNumber: 21,
             columnNumber: 7
         }, this)
     }, void 0, false, {
@@ -761,9 +761,25 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$chat$2f
 function ChatList({ messages }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "flex flex-col gap-6",
-        children: messages.map((msg, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$chat$2f$ChatMessage$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                message: msg
-            }, index, false, {
+        children: messages.map((msg, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "relative",
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$chat$2f$ChatMessage$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
+                        message: msg
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/chat/ChatList.jsx",
+                        lineNumber: 8,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute left-0 right-0 -bottom-3 h-px bg-gradient-to-r from-transparent via-white/6 to-transparent"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/chat/ChatList.jsx",
+                        lineNumber: 10,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, index, true, {
                 fileName: "[project]/src/components/chat/ChatList.jsx",
                 lineNumber: 7,
                 columnNumber: 9
@@ -1079,17 +1095,17 @@ function TypingIndicator() {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "flex justify-start",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/8 border border-white/10 backdrop-blur-lg text-gray-200 text-[15px]",
+            className: "flex items-center gap-3 px-5 py-3 rounded-2xl assistant-bubble-gradient border border-white/6 backdrop-blur-lg text-white text-[15px]",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                    className: "inline-flex h-2.5 w-2.5 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 animate-pulse"
+                    className: "inline-flex h-3 w-3 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 animate-pulse shadow-md"
                 }, void 0, false, {
                     fileName: "[project]/src/components/chat/TypingIndicator.jsx",
                     lineNumber: 5,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                    className: "font-medium text-white/80",
+                    className: "font-medium text-white/90",
                     children: "Omnix is typing"
                 }, void 0, false, {
                     fileName: "[project]/src/components/chat/TypingIndicator.jsx",
@@ -1097,24 +1113,24 @@ function TypingIndicator() {
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex gap-1",
+                    className: "flex gap-1 items-end",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            className: "w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce [animation-delay:0ms]"
+                            className: "w-2.5 h-2.5 bg-gradient-to-r from-indigo-400 to-pink-400 rounded-full animate-bounce [animation-delay:0ms]"
                         }, void 0, false, {
                             fileName: "[project]/src/components/chat/TypingIndicator.jsx",
                             lineNumber: 10,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            className: "w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce [animation-delay:150ms]"
+                            className: "w-2.5 h-2.5 bg-gradient-to-r from-indigo-400 to-pink-400 rounded-full animate-bounce [animation-delay:150ms]"
                         }, void 0, false, {
                             fileName: "[project]/src/components/chat/TypingIndicator.jsx",
                             lineNumber: 11,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                            className: "w-1.5 h-1.5 bg-white/60 rounded-full animate-bounce [animation-delay:300ms]"
+                            className: "w-2.5 h-2.5 bg-gradient-to-r from-indigo-400 to-pink-400 rounded-full animate-bounce [animation-delay:300ms]"
                         }, void 0, false, {
                             fileName: "[project]/src/components/chat/TypingIndicator.jsx",
                             lineNumber: 12,
@@ -1167,6 +1183,7 @@ function ChatLayout() {
     const { messages, sendMessage, loading, resetChat } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useChat$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useChat"])();
     const { speak } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useSpeech$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSpeech"])();
     const bottomRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const scrollRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])(null);
     const [activeChatId, setActiveChatId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(1);
     const [recentChats] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([
         {
@@ -1196,11 +1213,24 @@ function ChatLayout() {
         messages,
         speak
     ]);
-    // Auto-scroll to bottom
+    // Auto-scroll to bottom with a "near-bottom" check so user's scroll
+    // position isn't forcefully changed if they're reading earlier messages.
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        bottomRef.current?.scrollIntoView({
-            behavior: "smooth"
-        });
+        const el = scrollRef.current;
+        if (!el) {
+            bottomRef.current?.scrollIntoView({
+                behavior: "smooth"
+            });
+            return;
+        }
+        const distanceFromBottom = el.scrollHeight - el.clientHeight - el.scrollTop;
+        const shouldScroll = distanceFromBottom < 180; // px threshold to auto-scroll
+        if (shouldScroll) {
+            el.scrollTo({
+                top: el.scrollHeight,
+                behavior: "smooth"
+            });
+        }
     }, [
         messages,
         loading
@@ -1215,41 +1245,41 @@ function ChatLayout() {
                         className: "absolute -top-72 -left-72 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-indigo-500/30 via-purple-500/30 to-transparent blur-3xl animate-spin-slow"
                     }, void 0, false, {
                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                        lineNumber: 48,
+                        lineNumber: 61,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute -bottom-72 -right-72 h-[700px] w-[700px] rounded-full bg-gradient-to-br from-pink-500/30 via-sky-400/20 to-transparent blur-3xl"
                     }, void 0, false, {
                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                        lineNumber: 49,
+                        lineNumber: 62,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute top-1/3 left-[45%] h-[420px] w-[420px] rounded-full bg-indigo-500/30 blur-2xl opacity-80 animate-float duration-[18s]"
                     }, void 0, false, {
                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                        lineNumber: 50,
+                        lineNumber: 63,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute top-4 right-10 h-24 w-24 rounded-full bg-pink-400/30 blur-2xl opacity-70 animate-float duration-[16s]"
                     }, void 0, false, {
                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                        lineNumber: 51,
+                        lineNumber: 64,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.08),transparent_55%)]"
                     }, void 0, false, {
                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                        lineNumber: 52,
+                        lineNumber: 65,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                lineNumber: 47,
+                lineNumber: 60,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1264,14 +1294,14 @@ function ChatLayout() {
                                     className: "absolute -top-10 -right-10 h-28 w-28 rounded-full bg-gradient-to-br from-indigo-500/25 via-purple-500/10 to-transparent blur-2xl"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                    lineNumber: 59,
+                                    lineNumber: 72,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "absolute bottom-6 left-6 h-24 w-24 rounded-full bg-pink-500/15 blur-2xl"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                    lineNumber: 60,
+                                    lineNumber: 73,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1287,7 +1317,7 @@ function ChatLayout() {
                                                             children: "Recent Chats"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                            lineNumber: 65,
+                                                            lineNumber: 78,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1295,13 +1325,13 @@ function ChatLayout() {
                                                             children: "My Chats"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                            lineNumber: 68,
+                                                            lineNumber: 81,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                    lineNumber: 64,
+                                                    lineNumber: 77,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1314,13 +1344,13 @@ function ChatLayout() {
                                                     children: "+"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                    lineNumber: 73,
+                                                    lineNumber: 86,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                            lineNumber: 63,
+                                            lineNumber: 76,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1335,7 +1365,7 @@ function ChatLayout() {
                                                                 className: `absolute left-0 top-1/2 h-8 w-1 -translate-y-1/2 rounded-r-full transition-all ${activeChatId === chat.id ? "bg-gradient-to-b from-indigo-400 to-fuchsia-400" : "bg-transparent group-hover:bg-indigo-400/50"}`
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                                lineNumber: 97,
+                                                                lineNumber: 110,
                                                                 columnNumber: 23
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1346,7 +1376,7 @@ function ChatLayout() {
                                                                         children: chat.title[0]
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                                        lineNumber: 106,
+                                                                        lineNumber: 119,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1354,36 +1384,36 @@ function ChatLayout() {
                                                                         children: chat.title
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                                        lineNumber: 109,
+                                                                        lineNumber: 122,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                                lineNumber: 105,
+                                                                lineNumber: 118,
                                                                 columnNumber: 23
                                                             }, this),
                                                             activeChatId === chat.id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 className: "absolute right-3 top-1/2 -translate-y-1/2 h-2 w-2 rounded-full bg-emerald-400/80 shadow-lg"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                                lineNumber: 113,
+                                                                lineNumber: 126,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, chat.id, true, {
                                                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                        lineNumber: 88,
+                                                        lineNumber: 101,
                                                         columnNumber: 21
                                                     }, this))
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                lineNumber: 86,
+                                                lineNumber: 99,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                            lineNumber: 85,
+                                            lineNumber: 98,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1398,14 +1428,14 @@ function ChatLayout() {
                                                     children: "+"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                    lineNumber: 127,
+                                                    lineNumber: 140,
                                                     columnNumber: 17
                                                 }, this),
                                                 "New Chat"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                            lineNumber: 120,
+                                            lineNumber: 133,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1413,31 +1443,31 @@ function ChatLayout() {
                                             children: "• Gemini • AI Chat"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                            lineNumber: 131,
+                                            lineNumber: 144,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "mt-6"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                            lineNumber: 136,
+                                            lineNumber: 149,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                    lineNumber: 62,
+                                    lineNumber: 75,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                            lineNumber: 58,
+                            lineNumber: 71,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                        lineNumber: 57,
+                        lineNumber: 70,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1455,13 +1485,17 @@ function ChatLayout() {
                                     }
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                    lineNumber: 145,
+                                    lineNumber: 158,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "flex-1 overflow-hidden",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        ref: scrollRef,
                                         className: "h-full overflow-y-auto pb-2",
+                                        style: {
+                                            scrollBehavior: 'smooth'
+                                        },
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "w-full space-y-6 px-4 lg:px-6",
                                             children: [
@@ -1475,7 +1509,7 @@ function ChatLayout() {
                                                                     className: "absolute inset-0 rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 blur-2xl opacity-60 animate-pulse"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                                    lineNumber: 161,
+                                                                    lineNumber: 174,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1485,18 +1519,18 @@ function ChatLayout() {
                                                                         children: "AI"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                                        lineNumber: 163,
+                                                                        lineNumber: 176,
                                                                         columnNumber: 27
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                                    lineNumber: 162,
+                                                                    lineNumber: 175,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                            lineNumber: 160,
+                                                            lineNumber: 173,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
@@ -1504,7 +1538,7 @@ function ChatLayout() {
                                                             children: "I can help you with anything from coding to creative writing."
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                            lineNumber: 167,
+                                                            lineNumber: 180,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1512,78 +1546,78 @@ function ChatLayout() {
                                                             children: "What would you like to build today?"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                            lineNumber: 168,
+                                                            lineNumber: 181,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                    lineNumber: 159,
+                                                    lineNumber: 172,
                                                     columnNumber: 21
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$chat$2f$ChatList$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                                     messages: messages
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                    lineNumber: 174,
+                                                    lineNumber: 187,
                                                     columnNumber: 19
                                                 }, this),
                                                 loading && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$chat$2f$TypingIndicator$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
                                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                    lineNumber: 175,
+                                                    lineNumber: 188,
                                                     columnNumber: 31
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     ref: bottomRef
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                                    lineNumber: 177,
+                                                    lineNumber: 190,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                            lineNumber: 157,
+                                            lineNumber: 170,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                        lineNumber: 156,
+                                        lineNumber: 169,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                    lineNumber: 155,
+                                    lineNumber: 168,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$1$2e$6_$40$opentelemetry$2b$_ac2098b7336f1075c278257a0b21105c$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$chat$2f$ChatInput$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                                     onSend: sendMessage
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                                    lineNumber: 182,
+                                    lineNumber: 195,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                            lineNumber: 144,
+                            lineNumber: 157,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                        lineNumber: 143,
+                        lineNumber: 156,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/chat/ChatLayout.jsx",
-                lineNumber: 55,
+                lineNumber: 68,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/chat/ChatLayout.jsx",
-        lineNumber: 45,
+        lineNumber: 58,
         columnNumber: 5
     }, this);
 }

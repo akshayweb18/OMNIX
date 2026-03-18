@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "clean:dev": "node -e \"const fs=require('fs'); for (const p of ['.next/dev/lock','.next/trace']) { try { fs.rmSync(p,{force:true}); } catch {} }\" && next dev",
     "build": "next build",
     "start": "next start"
-    
   },
   "dependencies": {
     "@ai-sdk/google": "^3.0.29",

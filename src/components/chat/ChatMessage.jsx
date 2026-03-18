@@ -16,9 +16,7 @@ export default function ChatMessage({ message }) {
 
   return (
     <div
-      className={`w-full flex ${
-        isUser ? "justify-end" : "justify-start"
-      } animate-fadeIn`}
+      className={`w-full flex ${isUser ? "justify-end" : "justify-start"} animate-chat-entry`}
     >
       <div
         className={`flex items-start gap-4 ${
@@ -50,8 +48,8 @@ export default function ChatMessage({ message }) {
               transition-all duration-300
               ${
                 isUser
-                  ? "bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 text-white rounded-2xl shadow-lg"
-                  : "bg-white/10 text-white border border-white/10 shadow-[0_15px_35px_-20px_rgba(99,102,241,0.2)] backdrop-blur-xl ring-1 ring-purple-500/20 hover:bg-white/15 hover:shadow-[0_18px_40px_-18px_rgba(99,102,241,0.25)] transition"
+                  ? "bg-gradient-to-br from-blue-500 via-indigo-500 to-purple-500 text-white rounded-2xl shadow-lg transform-gpu"
+                  : "assistant-bubble-gradient text-white border-transparent backdrop-blur-xl ring-1 ring-purple-500/12 hover:shadow-[0_18px_40px_-18px_rgba(99,102,241,0.25)] transition"
               }
             `}
           >
@@ -97,7 +95,7 @@ export default function ChatMessage({ message }) {
           {!isUser && (
             <button
               onClick={handleCopy}
-              className="absolute -bottom-6 left-2 text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:text-gray-700"
+              className="absolute -bottom-6 left-2 text-xs text-gray-200/80 opacity-0 group-hover:opacity-100 transition-all duration-200 hover:text-white"
             >
               {copied ? "Copied ✓" : "Copy"}
             </button>
