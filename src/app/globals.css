@@ -36,14 +36,34 @@
 
 /* ─── Base ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; padding: 0; }
+
+html {
+  height: 100%;
+  height: -webkit-fill-available;
+  margin: 0;
+  padding: 0;
+  /* Fill the overscroll bounce area on iOS with the app background — no white flash */
+  background: #07010f;
+  background-color: #07010f;
+  /* Stop rubber-band overscroll from showing white at edges */
+  overscroll-behavior: none;
+  /* Tell browser this is a dark UI — prevents white flicker on load */
+  color-scheme: dark;
+}
+
 body {
+  height: 100%;
   min-height: 100vh;
-  background: var(--bg);
+  min-height: -webkit-fill-available;
+  margin: 0;
+  padding: 0;
+  background: #07010f;
+  background-color: #07010f;
   color: var(--t1);
   font-family: var(--font-geist-sans, 'Inter', system-ui, sans-serif);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overscroll-behavior: none;
 }
 
 /* ─── Mobile viewport fix ─────────────────────────────────── */

@@ -239,7 +239,7 @@ function Sidebar({ activeChatId, sessions, onSelectChat, onNewChat, onDeleteChat
       </div>
 
       {/* ── SESSION LIST ── */}
-      <div className="flex-1 overflow-y-auto px-3 pb-2">
+      <div className="flex-1 overflow-y-auto px-3 pb-2" style={{ overscrollBehavior: "contain" }}>
         {sessions.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-40 gap-3">
             <div className="h-12 w-12 rounded-2xl flex items-center justify-center"
@@ -499,9 +499,9 @@ export default function ChatLayout() {
 
           <ChatHeader onMenuToggle={() => setSidebarOpen(v => !v)} onNewChat={handleNewChat} />
 
-          {/* Messages — grows, scrolls internally */}
+          {/* Messages — grows, scrolls internally. overscroll-behavior:contain stops it propagating to the page */}
           <div className="flex-1 min-h-0 overflow-hidden">
-            <div ref={scrollRef} className="h-full overflow-y-auto" style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
+            <div ref={scrollRef} className="h-full overflow-y-auto" style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}>
               <div className="mx-auto w-full max-w-3xl px-4 py-6 sm:px-6">
                 {messages.length === 0 && !loading
                   ? <WelcomeScreen onSend={handleSend} />
