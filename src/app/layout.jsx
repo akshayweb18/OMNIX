@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Gemini Clone",
-  description: "AI Chat Interface built with Next.js",
+  title: "OMNIX — AI Assistant",
+  description: "OMNIX is a world-class AI assistant powered by Gemini. Ask anything, build anything.",
 };
 
 export default function RootLayout({ children }) {
@@ -21,13 +21,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body
         className={`
-          ${geistSans.variable} 
-          ${geistMono.variable} 
-          font-sans
-          bg-[#f7f7f8]
-          text-gray-900
-          antialiased
+          ${geistSans.variable}
+          ${geistMono.variable}
+          font-sans antialiased
         `}
+        style={{ background: "var(--bg-base)", color: "var(--text-primary)" }}
       >
         {children}
       </body>

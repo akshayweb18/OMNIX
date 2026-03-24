@@ -56,8 +56,12 @@ export function useChat() {
   };
 
   const resetChat = () => {
-    setMessages([]); // 🔥 THIS IS NEW CHAT
+    setMessages([]);
   };
 
-  return { messages, sendMessage, loading, resetChat };
+  const loadChat = (savedMessages) => {
+    setMessages(savedMessages || []);
+  };
+
+  return { messages, sendMessage, loading, resetChat, loadChat };
 }

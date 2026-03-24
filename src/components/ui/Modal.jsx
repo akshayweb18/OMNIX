@@ -5,71 +5,61 @@ import { useEffect } from "react";
 export default function Modal({ open, onClose, title, children }) {
   useEffect(() => {
     if (!open) return;
-
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") onClose();
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
+    const fn = (e) => e.key === "Escape" && onClose();
+    document.addEventListener("keydown", fn);
     document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
+    return () => { document.removeEventListener("keydown", fn); document.body.style.overflow = ""; };
   }, [open, onClose]);
 
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
-      <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        onClick={onClose}
-      />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fade-in">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/75" style={{ backdropFilter: "blur(12px)" }} onClick={onClose} />
 
-      <div className="relative w-full max-w-xl rounded-2xl bg-white dark:bg-gray-950 shadow-2xl ring-1 ring-black/10">
-        <div className="flex items-start justify-between gap-4 border-b border-gray-200/60 dark:border-gray-800/60 px-6 py-4">
+      {/* Dialog */}
+      <div className="relative w-full max-w-md rounded-2xl animate-scale-in"
+        style={{
+          background: "rgba(10,4,28,0.98)",
+          border: "1px solid rgba(124,58,237,0.25)",
+          boxShadow: "0 0 60px rgba(109,40,217,0.2), 0 40px 80px rgba(0,0,0,0.8)",
+          backdropFilter: "blur(24px)",
+        }}>
+
+        {/* Gradient top edge */}
+        <div className="absolute top-0 left-6 right-6 h-px rounded-full"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(124,58,237,0.7), rgba(236,72,153,0.6), transparent)", backgroundSize: "200% 100%", animation: "aurora-shift 4s ease infinite" }} />
+
+        {/* Header */}
+        <div className="flex items-center justify-between gap-4 px-6 py-4"
+          style={{ borderBottom: "1px solid rgba(99,102,241,0.12)" }}>
           <div>
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-              {title}
-            </h2>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              See details for the model powering your responses.
-            </p>
+            <h2 className="font-bold text-base" style={{ color: "var(--t1)" }}>{title}</h2>
+            <p style={{ fontSize: 11, color: "var(--t3)", marginTop: 2 }}>Powered by Google Gemini</p>
           </div>
-          <button
-            onClick={onClose}
-            aria-label="Close modal"
-            className="rounded-xl p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-white/10 dark:text-gray-300 transition"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+          <button onClick={onClose}
+            className="flex h-8 w-8 items-center justify-center rounded-xl text-sm font-bold transition-all"
+            style={{ color: "var(--t3)", background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}
+            onMouseEnter={e => { e.currentTarget.style.color = "#f472b6"; e.currentTarget.style.background = "rgba(236,72,153,0.08)"; e.currentTarget.style.borderColor = "rgba(236,72,153,0.2)"; }}
+            onMouseLeave={e => { e.currentTarget.style.color = "var(--t3)"; e.currentTarget.style.background = "rgba(255,255,255,0.04)"; e.currentTarget.style.borderColor = "rgba(255,255,255,0.07)"; }}>
+            ✕
           </button>
         </div>
 
-        <div className="px-6 py-5">
-          {children}
-        </div>
+        <div className="px-6 py-5">{children}</div>
 
-        <div className="flex justify-end gap-2 border-t border-gray-200/60 dark:border-gray-800/60 px-6 py-4">
-          <button
-            onClick={onClose}
-            className="rounded-xl bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:bg-gray-900 dark:text-gray-200 dark:hover:bg-gray-800 transition"
-          >
+        <div className="flex justify-end px-6 py-4" style={{ borderTop: "1px solid rgba(99,102,241,0.10)" }}>
+          <button onClick={onClose}
+            className="gradient-btn rounded-xl px-5 py-2 text-sm font-bold text-white"
+            style={{ borderRadius: 10 }}>
             Close
           </button>
         </div>
+
+        {/* Gradient bottom edge */}
+        <div className="absolute bottom-0 left-6 right-6 h-px rounded-full"
+          style={{ background: "linear-gradient(90deg, transparent, rgba(217,70,239,0.4), transparent)" }} />
       </div>
     </div>
   );

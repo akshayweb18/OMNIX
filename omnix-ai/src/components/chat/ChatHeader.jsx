@@ -34,7 +34,7 @@ export default function ChatHeader() {
                   OMNIX
                 </span>
               </span>
-              <span className="text-[11px] text-white/60">
+              <span className="text-[11px]  text-white/60">
                 Gemini 3 Flash Preview
               </span>
             </div>
