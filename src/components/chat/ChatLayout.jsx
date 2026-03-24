@@ -443,7 +443,7 @@ export default function ChatLayout() {
   const sp = { activeChatId, sessions, onSelectChat: handleSelectChat, onNewChat: handleNewChat, onDeleteChat: handleDeleteChat };
 
   return (
-    <div className="relative h-screen overflow-hidden" style={{ background: "var(--bg)" }}>
+    <div className="relative h-dvh overflow-hidden" style={{ background: "var(--bg)" }}>
 
       {/* ── Aurora orbs ── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -460,34 +460,48 @@ export default function ChatLayout() {
           style={{ backgroundImage: "radial-gradient(circle, rgba(200,190,255,0.9) 1px, transparent 1px)", backgroundSize: "36px 36px" }} />
       </div>
 
-      {/* Mobile overlay */}
-      {sidebarOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden animate-fade-in"
-          style={{ background: "rgba(0,0,0,0.72)", backdropFilter: "blur(10px)" }}
-          onClick={() => setSidebarOpen(false)} />
-      )}
+      {/* Mobile overlay — always in DOM, opacity-driven so close animates too */}
+      <div
+        className="fixed inset-0 z-40 lg:hidden"
+        style={{
+          background: "rgba(0,0,0,0.72)",
+          backdropFilter: "blur(8px)",
+          WebkitBackdropFilter: "blur(8px)",
+          opacity: sidebarOpen ? 1 : 0,
+          pointerEvents: sidebarOpen ? "auto" : "none",
+          transition: "opacity 180ms ease",
+        }}
+        onClick={() => setSidebarOpen(false)}
+      />
 
-      {/* Mobile sidebar */}
+      {/* Mobile sidebar — GPU-accelerated, 180ms */}
       <aside
-        className={`fixed left-0 top-0 z-50 h-full w-72 lg:hidden glass-sidebar transition-transform duration-300 ease-out ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
+        className="fixed left-0 top-0 z-50 h-dvh w-[280px] lg:hidden glass-sidebar"
+        style={{
+          transform: sidebarOpen ? "translateX(0)" : "translateX(-100%)",
+          transition: "transform 180ms cubic-bezier(0.4, 0, 0.2, 1)",
+          willChange: "transform",
+        }}
+      >
         <Sidebar {...sp} onClose={() => setSidebarOpen(false)} />
       </aside>
 
       {/* Layout */}
-      <div className="relative flex h-screen w-full">
+      <div className="relative flex h-dvh w-full">
 
         {/* Desktop sidebar */}
-        <aside className="hidden lg:flex w-64 xl:w-72 shrink-0 h-full flex-col glass-sidebar">
+        <aside className="hidden lg:flex w-64 xl:w-72 shrink-0 h-dvh flex-col glass-sidebar">
           <Sidebar {...sp} onClose={() => {}} />
         </aside>
 
-        {/* Chat column */}
-        <div className="flex flex-1 flex-col h-full min-w-0">
+        {/* Chat column — flex column fills remaining space, input always at bottom */}
+        <div className="flex flex-1 flex-col min-w-0" style={{ height: "100%" }}>
 
           <ChatHeader onMenuToggle={() => setSidebarOpen(v => !v)} onNewChat={handleNewChat} />
 
-          <div className="flex-1 overflow-hidden">
-            <div ref={scrollRef} className="h-full overflow-y-auto" style={{ scrollBehavior: "smooth" }}>
+          {/* Messages — grows, scrolls internally */}
+          <div className="flex-1 min-h-0 overflow-hidden">
+            <div ref={scrollRef} className="h-full overflow-y-auto" style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
               <div className="mx-auto w-full max-w-3xl px-4 py-6 sm:px-6">
                 {messages.length === 0 && !loading
                   ? <WelcomeScreen onSend={handleSend} />
@@ -503,9 +517,17 @@ export default function ChatLayout() {
             </div>
           </div>
 
-          {/* Input */}
-          <div style={{ background: "rgba(7,1,15,0.94)", borderTop: "1px solid rgba(99,102,241,0.12)", backdropFilter: "blur(28px)" }}>
-            <div className="mx-auto w-full max-w-3xl px-4 py-4 sm:px-6">
+          {/* Input — always pinned at bottom, respects safe area (iPhone home bar) */}
+          <div
+            className="shrink-0 pb-safe"
+            style={{
+              background: "rgba(7,1,15,0.94)",
+              borderTop: "1px solid rgba(99,102,241,0.12)",
+              backdropFilter: "blur(28px)",
+              WebkitBackdropFilter: "blur(28px)",
+            }}
+          >
+            <div className="mx-auto w-full max-w-3xl px-4 pt-3 pb-3 sm:px-6">
               <ChatInput onSend={handleSend} loading={loading} />
               <p className="mt-2 text-center" style={{ fontSize: 10, color: "var(--t3)", letterSpacing: "0.06em" }}>
                 OMNIX may produce inaccurate results · Always verify important information

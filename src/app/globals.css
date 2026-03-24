@@ -46,6 +46,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ─── Mobile viewport fix ─────────────────────────────────── */
+/* Prevents zoom on input focus on iOS */
+input, textarea, select { font-size: 16px; }
+@media (min-width: 640px) {
+  input, textarea, select { font-size: inherit; }
+}
+
+/* Dynamic viewport height — shrinks when mobile keyboard opens */
+.h-dvh {
+  height: 100vh;
+  height: -webkit-fill-available;
+  height: 100dvh;
+}
+/* Safe area padding for iPhone notch/home bar */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 /* ─── Custom Scrollbar ─────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
