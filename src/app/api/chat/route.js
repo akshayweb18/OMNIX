@@ -15,7 +15,7 @@ export async function POST(req) {
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
     const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash",
+      model: "gemini-2.0-flash-001",
       systemInstruction: {
         parts: [
           {
@@ -51,14 +51,7 @@ Language Rules:
       },
     });
 
-    const result = await model.generateContentStream({
-      contents: [
-        {
-          role: "user",
-          parts: [{ text: message }],
-        },
-      ],
-    });
+    const result = await model.generateContentStream(message);
 
     const encoder = new TextEncoder();
     const stream = new ReadableStream({
@@ -81,7 +74,6 @@ Language Rules:
     return new Response(stream, {
       headers: {
         "Content-Type": "text/plain; charset=utf-8",
-        "Transfer-Encoding": "chunked",
         "Cache-Control": "no-cache",
       },
     });
@@ -90,13 +82,13 @@ Language Rules:
     console.error("FULL ERROR:", error);
 
     const status = error?.status || 500;
-    let message = error?.message || "Internal server error";
+    let errMsg = error?.message || "Internal server error";
 
     if (status === 403) {
-      message = "Google Generative AI API key rejected. Rotate your API key.";
+      errMsg = "API key rejected. Please rotate your GEMINI_API_KEY.";
     }
 
-    return new Response(JSON.stringify({ error: message }), {
+    return new Response(JSON.stringify({ error: errMsg }), {
       status,
       headers: { "Content-Type": "application/json" },
     });
