@@ -1,116 +1,29 @@
-[00:00:11.621] Server  LOG     ✓ Ready in 7.7s
-[00:00:56.638] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:43.747] Server  LOG     ✓ Compiled in 8.6s
-[00:02:51.124] Server  LOG     ✓ Compiled in 791ms
-[00:04:22.890] Server  LOG     ✓ Compiled in 11.6s
-[00:05:10.591] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
-This will cause a hydration error.%s <pre> p 
-
-  ...
-    <div className="flex flex-...">
-      <ChatHeader>
-      <div className="flex-1 ove...">
-        <div ref={{...}} className="h-full ove..." style={{...}}>
-          <div className="mx-auto w-...">
-            <div className="space-y-2 ...">
-              <ChatList messages={[...]}>
-                <div className="flex flex-...">
-                  <div>
-                  <div className="relative">
-                    <ChatMessage message={{role:"assi...", ...}}>
-                      <div className="w-full fle...">
-                        <div className={"flex ite..."}>
-                          <div>
-                          <div className="group rela...">
-                            <div className={"\n      ..."}>
-                              <Markdown remarkPlugins={[...]} components={{p:function p, ...}}>
-                                <p node={{type:"element", ...}}>
->                                 <p className="mb-2 last:mb-0">
-                                    <code node={{type:"element", ...}}>
->                                     <pre
->                                       className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm my-3"
->                                     >
-                                    ...
-                                ...
-                            ...
-                    ...
-              ...
-      ...
-
-[00:05:10.591] Browser ERROR   <%s> cannot contain a nested %s.
-See this log for the ancestor stack trace. p <pre>
-[00:05:30.507] Server  LOG     ✓ Finished writing to filesystem cache in 12.0s
-[00:06:27.007] Server  LOG     ✓ Compiled in 25.8s
-[00:06:27.111] Server  LOG     ✓ Finished writing to filesystem cache in 13.2s
-[00:06:36.676] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:04.089] Server  LOG     ✓ Compiled in 31.5s
-[00:08:08.217] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
-This will cause a hydration error.%s <div> p 
-
-  ...
-    <div className="flex-1 ove...">
-      <div ref={{...}} className="h-full ove..." style={{...}}>
-        <div className="mx-auto w-...">
-          <div className="space-y-2 ...">
-            <ChatList messages={[...]}>
-              <div className="flex flex-...">
-                <div>
-                <div className="relative">
-                  <ChatMessage message={{role:"assi...", ...}}>
-                    <div className="w-full fle...">
-                      <div className={"flex ite..."}>
-                        <div>
-                        <div className="group rela...">
-                          <p>
-                          <div className="relative r...">
-                            <div className="prose-omni...">
-                              <Markdown remarkPlugins={[...]} components={{p:function p, ...}}>
-                                <p node={{type:"element", ...}}>
->                                 <p>
-                                    <code node={{type:"element", ...}}>
-                                      <CodeBlock className={undefined}>
-                                        <div className="code-block...">
->                                         <div className="code-block-header">
-                                          ...
-                                    ...
-                                ...
-                          ...
-                  ...
-            ...
-
-[00:08:08.217] Browser ERROR   <%s> cannot contain a nested %s.
-See this log for the ancestor stack trace. p <div>
-[00:08:19.838] Server  LOG     ✓ Finished writing to filesystem cache in 13.3s
-[00:09:05.289] Server  LOG     ✓ Finished filesystem cache database compaction in 41s
-[00:09:20.619] Server  LOG     ✓ Compiled in 1316ms
-[00:09:48.334] Server  LOG     ✓ Compiled in 8s
-[00:10:51.939] Server  LOG     ✓ Compiled in 11.4s
-[00:11:06.882] Server  LOG     ✓ Finished writing to filesystem cache in 12.1s
-[00:11:44.574] Server  LOG     ✓ Compiled in 6.4s
-[00:13:36.693] Server  LOG     ✓ Compiled in 1724ms
-[00:15:57.236] Server  LOG     ✓ Compiled in 11.5s
-[00:17:35.356] Server  LOG     ✓ Compiled in 1188ms
-[00:19:01.795] Server  LOG     ✓ Compiled in 5.7s
-[00:20:23.681] Server  LOG     ✓ Compiled in 11.9s
-[00:27:46.887] Server  LOG     ✓ Compiled in 1419ms
-[00:28:51.643] Server  LOG     ✓ Compiled in 1319ms
-[00:30:18.507] Server  LOG     ✓ Compiled in 1508ms
-[00:30:53.690] Server  LOG     ✓ Compiled in 3.3s
-[00:31:07.835] Server  LOG     ✓ Finished writing to filesystem cache in 12.2s
-[00:31:58.643] Server  LOG     ✓ Compiled in 11.8s
-[00:32:32.831] Server  LOG     ✓ Compiled in 3s
-[00:33:05.154] Server  LOG     ✓ Compiled in 5s
-[00:33:11.200] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:33:14.376] Server  LOG     ✓ Compiled in 4s
-[00:33:54.544] Server  LOG     ✓ Compiled in 4.6s
-[00:38:59.576] Server  LOG     ✓ Compiled in 22.9s
-[00:40:24.572] Server  LOG     ✓ Compiled in 8s
-[00:41:14.532] Server  LOG     ✓ Compiled in 2.6s
-[00:41:49.840] Server  LOG     ✓ Compiled in 1435ms
-[00:42:46.115] Server  LOG     ✓ Compiled in 6.3s
-[00:43:19.983] Server  LOG     ✓ Compiled in 1976ms
-[00:43:39.102] Server  LOG     ✓ Compiled in 2.4s
-[00:43:57.445] Server  LOG     ✓ Compiled in 2s
-[00:46:51.049] Server  LOG     ✓ Compiled in 10s
-[00:46:53.934] Server  LOG     ✓ Compiled in 2.7s
-[00:49:24.161] Server  LOG     ✓ Compiled in 3.1s
+[00:00:18.202] Server  LOG     ✓ Ready in 6.4s
+[00:00:21.902] Server  LOG     ○ Compiling / ...
+[00:00:33.641] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:47.709] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:27.006] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:43.747] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:09.796] Server  LOG     ✓ Compiled in 3.5s
+[00:05:18.071] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:06.422] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:14:16.413] Server  LOG     ✓ Compiled in 95ms
+[00:14:16.842] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:19:14.851] Server  LOG     ✓ Compiled in 7.1s
+[00:21:30.960] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:24:20.697] Server  LOG     ✓ Compiled in 550ms
+[00:24:22.952] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:03.956] Server  LOG     ✓ Compiled in 3.1s
+[00:27:24.994] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:15.625] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:00.950] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:29.871] Server  LOG     ✓ Compiled in 5.9s
+[00:36:16.498] Server  LOG     ✓ Compiled in 1755ms
+[00:37:09.802] Server  LOG     ✓ Compiled in 635ms
+[00:40:42.509] Server  LOG     ✓ Compiled in 730ms
+[00:41:10.289] Server  LOG     ✓ Compiled in 2.6s
+[00:41:45.191] Server  LOG     ✓ Compiled in 254ms
+[00:43:17.277] Server  LOG     ✓ Compiled in 278ms
+[00:44:00.094] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:46:45.363] Server  LOG     ✓ Compiled in 387ms
+[00:46:47.178] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

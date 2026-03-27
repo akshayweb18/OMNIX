@@ -42,7 +42,7 @@ export function useChat() {
           content: data?.content || "Server busy. Please try again.",
         },
       ]);
-    } catch (error) {
+    } catch {
       setMessages((prev) => [
         ...prev,
         {
@@ -59,8 +59,8 @@ export function useChat() {
     setMessages([]);
   };
 
-  const loadChat = (savedMessages) => {
-    setMessages(savedMessages || []);
+  const loadChat = (msgs) => {
+    setMessages(msgs || []);
   };
 
   return { messages, sendMessage, loading, resetChat, loadChat };

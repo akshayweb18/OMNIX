@@ -6,6 +6,7 @@ import { useSpeech } from "@/hooks/useSpeech";
 
 export default function ChatInput({ onSend, loading }) {
   const [text, setText] = useState("");
+  const [focused, setFocused] = useState(false);
   const textareaRef = useRef(null);
 
   const saveHistory = (msg) => {
@@ -26,7 +27,7 @@ export default function ChatInput({ onSend, loading }) {
     const el = textareaRef.current;
     if (!el) return;
     el.style.height = "auto";
-    el.style.height = Math.min(el.scrollHeight, 160) + "px";
+    el.style.height = Math.min(el.scrollHeight, 120) + "px";
   }, [text]);
 
   const handleSend = () => {
@@ -34,6 +35,11 @@ export default function ChatInput({ onSend, loading }) {
     if (!t || loading) return;
     stop(); onSend(t); saveHistory(t); setText("");
     if (textareaRef.current) textareaRef.current.style.height = "auto";
+  };
+
+  const handleStop = () => {
+    stop();
+    if (typeof window !== "undefined") window.speechSynthesis.cancel();
   };
 
   const handleKeyDown = (e) => {
@@ -47,103 +53,116 @@ export default function ChatInput({ onSend, loading }) {
   };
 
   const isEmpty = !text.trim();
+  const glowActive = focused || listening;
 
   return (
-    <div className="input-container">
-      {/* Animated gradient top edge when focused */}
-      <div className="absolute top-0 inset-x-4 h-px rounded-full opacity-0 pointer-events-none transition-opacity duration-300"
-        style={{ background: "linear-gradient(90deg, transparent, #7c3aed, #ec4899, #06b6d4, transparent)", backgroundSize: "200% 100%", animation: "aurora-shift 3s ease infinite" }}
-        id="input-top-line" />
+    <div className="omnix-input-wrapper" style={{ position: "relative", borderRadius: 18, padding: 1.5 }}>
 
-      {/* Text area row */}
-      <div className="flex items-start gap-3 px-4 pt-4">
-        {/* Sparkle prefix */}
-        <div className="mt-1 shrink-0">
-          <div className="h-5 w-5 rounded-md gradient-fill flex items-center justify-center text-white" style={{ fontSize: 10, fontWeight: 900, boxShadow: "0 2px 8px rgba(124,58,237,0.4)" }}>✦</div>
-        </div>
+      {/* Spinning gradient border */}
+      <div className={`omnix-input-ring ${glowActive ? "omnix-input-ring-active" : ""}`} />
 
-        <textarea
-          ref={textareaRef}
-          value={text}
-          onChange={(e) => { setText(e.target.value); if (typeof window !== "undefined") window.speechSynthesis.cancel(); }}
-          onFocus={() => { if (typeof window !== "undefined") window.speechSynthesis.cancel(); document.getElementById("input-top-line")?.style && (document.getElementById("input-top-line").style.opacity = "1"); }}
-          onBlur={() => { document.getElementById("input-top-line")?.style && (document.getElementById("input-top-line").style.opacity = "0"); }}
-          onKeyDown={handleKeyDown}
-          placeholder={loading ? "OMNIX is thinking…" : "Message OMNIX… (Shift+Enter for new line)"}
-          rows={1}
-          disabled={loading}
-          className="w-full bg-transparent outline-none resize-none text-[14.5px] leading-relaxed"
-          style={{
-            color: "var(--t1)",
-            fontFamily: "inherit",
-            caretColor: "#a78bfa",
-            minHeight: 28,
-            maxHeight: 160,
-          }}
-        />
-      </div>
+      {/* Inner container */}
+      <div style={{
+        position: "relative",
+        borderRadius: 16.5,
+        background: "linear-gradient(145deg, rgba(10,14,40,0.95), rgba(14,18,50,0.92))",
+        zIndex: 1,
+      }}>
 
-      {/* Toolbar */}
-      <div className="flex items-center justify-between px-4 pb-3.5 pt-2">
-        {/* Left: hint */}
-        <span style={{ fontSize: 11, color: "var(--t3)" }}>
-          {loading ? (
-            <span className="flex items-center gap-1.5">
-              <span className="inline-block h-1.5 w-1.5 rounded-full animate-pulse-ring"
-                style={{ background: "linear-gradient(135deg, #7c3aed, #ec4899)", boxShadow: "0 0 6px rgba(168,85,247,0.7)" }} />
-              Generating response…
-            </span>
-          ) : isEmpty ? "Ask anything · Enter to send" : `${text.length} chars · Shift+Enter for new line`}
-        </span>
+        {/* Textarea row */}
+        <div style={{ display: "flex", alignItems: "center", gap: 8, padding: "10px 10px 10px 14px" }}>
 
-        {/* Right: buttons */}
-        <div className="flex items-center gap-2">
-
-          {/* Mic */}
-          <button onClick={handleMic} aria-label={listening ? "Stop" : "Voice input"}
-            className="relative flex h-9 w-9 items-center justify-center rounded-xl transition-all duration-250"
+          <textarea
+            ref={textareaRef}
+            value={text}
+            onChange={(e) => { setText(e.target.value); if (typeof window !== "undefined") window.speechSynthesis.cancel(); }}
+            onKeyDown={handleKeyDown}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            placeholder={loading ? "OMNIX is thinking..." : listening ? "Listening..." : "Message OMNIX..."}
+            rows={1}
+            disabled={loading}
             style={{
-              background: listening
-                ? "linear-gradient(135deg, rgba(124,58,237,0.25), rgba(236,72,153,0.2))"
-                : "rgba(99,102,241,0.07)",
-              border: `1px solid ${listening ? "rgba(168,85,247,0.45)" : "rgba(99,102,241,0.15)"}`,
-              color: listening ? "#c4b5fd" : "var(--t3)",
-              boxShadow: listening ? "0 0 20px rgba(168,85,247,0.25)" : "none",
+              flex: 1, minWidth: 0,
+              background: "transparent", outline: "none", resize: "none", border: "none",
+              color: "var(--t1)", fontFamily: "inherit",
+              fontSize: 14, lineHeight: 1.5,
+              minHeight: 22, maxHeight: 120,
+              padding: "4px 0",
+              verticalAlign: "middle",
             }}
-            onMouseEnter={e => { if (!listening) { e.currentTarget.style.background = "rgba(99,102,241,0.12)"; e.currentTarget.style.color = "#a78bfa"; } }}
-            onMouseLeave={e => { if (!listening) { e.currentTarget.style.background = "rgba(99,102,241,0.07)"; e.currentTarget.style.color = "var(--t3)"; } }}
-          >
-            {listening && (
-              <span className="absolute inset-0 rounded-xl border border-purple-400 opacity-50"
-                style={{ animation: "pulse-ring 1.2s ease-in-out infinite" }} />
-            )}
-            <svg className="relative z-10 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 14a3 3 0 003-3V7a3 3 0 10-6 0v4a3 3 0 003 3zm5-3a1 1 0 10-2 0 3 3 0 11-6 0 1 1 0 10-2 0 5 5 0 0010 0zm-5 9a1 1 0 001-1v-3h-2v3a1 1 0 001 1z" />
-            </svg>
-          </button>
+          />
 
-          {/* Send */}
-          <button
-            onClick={handleSend}
-            disabled={isEmpty || loading}
-            aria-label="Send message"
-            className="gradient-btn flex h-9 items-center gap-2 rounded-xl px-5 text-[13px] font-bold tracking-wide text-white"
-          >
-            {loading ? (
-              <svg className="h-4 w-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-20" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
-                <path className="opacity-80" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          {/* Buttons */}
+          <div style={{ display: "flex", alignItems: "center", gap: 6, flexShrink: 0 }}>
+
+            {/* Voice button — glowing orb style */}
+            <button onClick={handleMic} aria-label={listening ? "Stop recording" : "Voice input"}
+              className={`omnix-mic-btn ${listening ? "omnix-mic-btn-active" : ""}`}>
+              {/* Pulse rings when listening */}
+              {listening && (
+                <>
+                  <span className="omnix-mic-pulse" style={{ animationDelay: "0s" }} />
+                  <span className="omnix-mic-pulse" style={{ animationDelay: "0.6s" }} />
+                </>
+              )}
+              <svg style={{ width: 16, height: 16, position: "relative", zIndex: 2 }} fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 14a3 3 0 003-3V7a3 3 0 10-6 0v4a3 3 0 003 3zm5-3a1 1 0 10-2 0 3 3 0 11-6 0 1 1 0 10-2 0 5 5 0 0010 0zm-5 9a1 1 0 001-1v-3h-2v3a1 1 0 001 1z" />
               </svg>
-            ) : (
-              <>
-                Send
-                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" />
-                </svg>
-              </>
+            </button>
+
+            {/* Stop */}
+            {loading && (
+              <button onClick={handleStop} aria-label="Stop generating"
+                style={{
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  width: 34, height: 34, borderRadius: 12,
+                  background: "rgba(248,113,113,0.12)",
+                  border: "1px solid rgba(248,113,113,0.25)",
+                  color: "#fca5a5", cursor: "pointer",
+                  transition: "background 0.15s",
+                }}
+                onMouseEnter={e => e.currentTarget.style.background = "rgba(248,113,113,0.22)"}
+                onMouseLeave={e => e.currentTarget.style.background = "rgba(248,113,113,0.12)"}>
+                <svg style={{ width: 14, height: 14 }} fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" /></svg>
+              </button>
             )}
-          </button>
+
+            {/* Send */}
+            {!loading && (
+              <button onClick={handleSend} disabled={isEmpty} aria-label="Send message"
+                className={`omnix-send-btn ${isEmpty ? "" : "omnix-send-btn-active"}`}>
+                <svg style={{ width: 16, height: 16 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+                </svg>
+              </button>
+            )}
+          </div>
         </div>
+
+        {/* Status line */}
+        {(loading || listening || !isEmpty) && (
+          <div style={{
+            display: "flex", alignItems: "center", gap: 6,
+            padding: "0 14px 8px",
+            fontSize: 10, color: "var(--t3)",
+            animation: "fade-in 200ms ease",
+          }}>
+            {loading ? (
+              <>
+                <span className="animate-pulse" style={{ width: 5, height: 5, borderRadius: "50%", background: "#c4b5fd", flexShrink: 0 }} />
+                <span>Generating response...</span>
+              </>
+            ) : listening ? (
+              <>
+                <span className="animate-pulse" style={{ width: 5, height: 5, borderRadius: "50%", background: "#22d3ee", flexShrink: 0 }} />
+                <span>Listening — speak now</span>
+              </>
+            ) : (
+              <span><span style={{ color: "#a5b4fc", fontWeight: 600 }}>{text.length}</span> chars · Enter to send</span>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

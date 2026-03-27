@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,22 +13,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "OMNIX — AI Assistant",
+  title: "OMNIX — Galaxy AI Assistant",
   description: "OMNIX is a world-class AI assistant powered by Gemini. Ask anything, build anything.",
+};
+
+export const viewport = {
+  themeColor: "#040818",
+  width: "device-width",
+  initialScale: 1,
+  userScalable: true,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`
-          ${geistSans.variable}
-          ${geistMono.variable}
-          font-sans antialiased
-        `}
-        style={{ background: "var(--bg-base)", color: "var(--text-primary)" }}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
-        {children}
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

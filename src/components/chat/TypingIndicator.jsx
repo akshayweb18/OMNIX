@@ -1,39 +1,34 @@
-import BrainLogo from "@/components/ui/BrainLogo";
+import GalaxyLogo from "@/components/ui/GalaxyLogo";
 
 export default function TypingIndicator() {
   return (
-    <div className="flex justify-start animate-chat-enter">
+    <div className="w-full flex justify-start animate-chat-enter">
       <div className="flex items-start gap-3 max-w-[80%]">
 
         {/* Avatar */}
-        <div className="relative h-8 w-8 rounded-xl flex items-center justify-center overflow-hidden shrink-0 mt-0.5"
-          style={{ background: "rgba(14,6,35,0.9)", border: "1px solid rgba(124,58,237,0.25)", boxShadow: "0 4px 16px rgba(109,40,217,0.2)" }}>
-          <div className="absolute inset-0 opacity-40"
-            style={{ background: "radial-gradient(circle at center, rgba(168,85,247,0.4), transparent)" }} />
-          <BrainLogo size={26} animate={false} />
+        <div className="shrink-0 mt-1">
+          <div className="h-8 w-8 rounded-full flex items-center justify-center overflow-hidden"
+            style={{
+              background: "linear-gradient(145deg, rgba(12,16,44,0.98), rgba(21,26,62,0.95))",
+              border: "1.5px solid rgba(129,140,248,0.25)",
+              boxShadow: "0 4px 12px rgba(99,102,241,0.2)",
+            }}>
+            <GalaxyLogo size={18} animate={false} />
+          </div>
         </div>
 
-        {/* Bubble */}
+        {/* Content */}
         <div>
-          <p className="mb-1.5 text-[11px] font-bold tracking-[0.12em] uppercase"
-            style={{ color: "rgba(192,132,252,0.55)" }}>OMNIX</p>
+          <div className="flex items-center gap-2 mb-1.5">
+            <span className="text-[11px] font-bold tracking-wide" style={{ color: "rgba(192,132,252,0.65)" }}>OMNIX</span>
+          </div>
 
-          <div className="bubble-ai rounded-2xl rounded-tl-sm px-4 py-3.5 flex items-center gap-3"
-            style={{ color: "var(--t1)" }}>
-
-            {/* Gradient shimmer top edge */}
-            <div className="absolute top-0 left-4 right-4 h-px rounded-full opacity-40"
-              style={{ background: "linear-gradient(90deg, transparent, rgba(167,139,250,0.6), rgba(232,121,249,0.5), transparent)" }} />
-
-            <span style={{ fontSize: 13, color: "var(--t2)" }}>Thinking</span>
-
-            <div className="flex items-end gap-1.5">
-              <span className="h-2 w-2 rounded-full dot-1"
-                style={{ background: "linear-gradient(135deg, #7c3aed, #4f46e5)", boxShadow: "0 0 8px rgba(124,58,237,0.7)" }} />
-              <span className="h-2 w-2 rounded-full dot-2"
-                style={{ background: "linear-gradient(135deg, #c026d3, #9333ea)", boxShadow: "0 0 8px rgba(217,70,239,0.7)" }} />
-              <span className="h-2 w-2 rounded-full dot-3"
-                style={{ background: "linear-gradient(135deg, #ec4899, #f97316)", boxShadow: "0 0 8px rgba(236,72,153,0.7)" }} />
+          <div className="bubble-ai rounded-2xl rounded-tl-md px-5 py-3.5 flex items-center gap-3">
+            <span className="text-[13px] font-medium" style={{ color: "var(--t2)" }}>Thinking</span>
+            <div className="flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full dot-1" style={{ background: "#818cf8" }} />
+              <span className="h-1.5 w-1.5 rounded-full dot-2" style={{ background: "#a78bfa" }} />
+              <span className="h-1.5 w-1.5 rounded-full dot-3" style={{ background: "#c084fc" }} />
             </div>
           </div>
         </div>

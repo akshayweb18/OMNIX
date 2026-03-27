@@ -1,1 +1,11 @@
-{}
+{
+  "[project]/src/components/chat/ChatLayout.jsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/components/chat/ChatLayout.jsx [app-client] (ecmascript, next/dynamic entry)",
+    "files": [
+      "static/chunks/src_1ace0856._.js",
+      "static/chunks/node_modules_micromark-core-commonmark_dev_lib_fc41dd51._.js",
+      "static/chunks/node_modules_39abb934._.js",
+      "static/chunks/src_components_chat_ChatLayout_jsx_6a8a85c2._.js"
+    ]
+  }
+}
