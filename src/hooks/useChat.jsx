@@ -33,22 +33,42 @@ export function useChat() {
         body: JSON.stringify({ message: text }),
       });
 
-      const data = await res.json();
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || "Server error");
+      }
 
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: data?.content || "Server busy. Please try again.",
-        },
-      ]);
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let accumulated = "";
+
+      setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        accumulated += decoder.decode(value, { stream: true });
+
+        setMessages((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = { role: "assistant", content: accumulated };
+          return updated;
+        });
+      }
+
+      if (!accumulated.trim()) {
+        setMessages((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = { role: "assistant", content: "Server busy. Please try again." };
+          return updated;
+        });
+      }
+
     } catch {
       setMessages((prev) => [
         ...prev,
-        {
-          role: "assistant",
-          content: "Error. Please try again.",
-        },
+        { role: "assistant", content: "Error. Please try again." },
       ]);
     } finally {
       setLoading(false);

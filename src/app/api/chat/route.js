@@ -1,5 +1,4 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { NextResponse } from "next/server";
 
 export async function POST(req) {
   try {
@@ -7,16 +6,16 @@ export async function POST(req) {
     const { message } = body;
 
     if (!message) {
-      return NextResponse.json(
-        { error: "Message required" },
-        { status: 400 }
-      );
+      return new Response(JSON.stringify({ error: "Message required" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
     const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
     const model = genAI.getGenerativeModel({
-      model: "gemini-3-flash-preview",
+      model: "gemini-2.0-flash",
       systemInstruction: {
         parts: [
           {
@@ -52,7 +51,7 @@ Language Rules:
       },
     });
 
-    const result = await model.generateContent({
+    const result = await model.generateContentStream({
       contents: [
         {
           role: "user",
@@ -61,26 +60,45 @@ Language Rules:
       ],
     });
 
-    const responseText = result.response.text();
+    const encoder = new TextEncoder();
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          for await (const chunk of result.stream) {
+            const text = chunk.text();
+            if (text) {
+              controller.enqueue(encoder.encode(text));
+            }
+          }
+        } catch (err) {
+          controller.enqueue(encoder.encode(`\n[ERROR]: ${err.message}`));
+        } finally {
+          controller.close();
+        }
+      },
+    });
 
-    return NextResponse.json(
-      { content: responseText },
-      { status: 200 }
-    );
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/plain; charset=utf-8",
+        "Transfer-Encoding": "chunked",
+        "Cache-Control": "no-cache",
+      },
+    });
 
   } catch (error) {
     console.error("FULL ERROR:", error);
 
-    const status = error?.status || (error?.response && error.response.status) || 500;
+    const status = error?.status || 500;
     let message = error?.message || "Internal server error";
 
     if (status === 403) {
-      message = "Google Generative AI API key rejected (leaked or invalid). Rotate your API key and set GEMINI_API_KEY in your environment.";
+      message = "Google Generative AI API key rejected. Rotate your API key.";
     }
 
-    return NextResponse.json(
-      { error: message },
-      { status }
-    );
+    return new Response(JSON.stringify({ error: message }), {
+      status,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 }
