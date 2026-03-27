@@ -345,7 +345,7 @@ export default function ChatLayout() {
   const sp = { activeChatId, sessions, onSelect: handleSelectChat, onNew: handleNewChat, onDelete: handleDeleteChat, user, onSignOut: signOut };
 
   return (
-    <div style={{ display: "flex", height: "100vh", width: "100%", overflow: "hidden", background: "var(--bg)", position: "relative" }}>
+    <div className="omnix-app-shell" style={{ display: "flex", width: "100%", overflow: "hidden", background: "var(--bg)", position: "relative" }}>
 
       {/* ═══ SIDEBAR — desktop: inline, mobile: absolute overlay ═══ */}
 
@@ -408,7 +408,7 @@ export default function ChatLayout() {
         </div>
 
         {/* Input bar — compact floating style */}
-        <div className="pb-safe" style={{ flexShrink: 0, background: "transparent", padding: "0 16px 12px" }}>
+        <div className="omnix-input-footer">
           <div style={{ margin: "0 auto", width: "100%", maxWidth: 720 }}>
             <ChatInput onSend={handleSend} loading={loading} />
             <p style={{ marginTop: 6, textAlign: "center", fontSize: 9, color: "var(--t3)", letterSpacing: "0.06em", opacity: 0.7 }}>

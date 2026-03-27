@@ -29,7 +29,7 @@ export default function ChatPage() {
   const showChat = mounted && !loading && !!user;
 
   return (
-    <div style={{ height: "100vh", width: "100%", overflow: showChat ? "hidden" : "visible", background: "#050816" }}>
+    <div className="omnix-app-shell" style={{ width: "100%", overflow: showChat ? "hidden" : "visible", background: "#050816" }}>
       {showChat ? (
         <ChatProvider>
           <ChatLayout />
