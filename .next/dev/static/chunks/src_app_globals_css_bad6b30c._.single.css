@@ -544,6 +544,10 @@
     left: calc(var(--spacing) * 3.5);
   }
 
+  .isolate {
+    isolation: isolate;
+  }
+
   .z-10 {
     z-index: 10;
   }
@@ -668,10 +672,6 @@
 
   .block {
     display: block;
-  }
-
-  .contents {
-    display: contents;
   }
 
   .flex {
@@ -1884,6 +1884,23 @@ input, textarea, select {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+.omnix-app-shell {
+  height: 100dvh;
+}
+
+.omnix-input-footer {
+  background: linear-gradient(to top, var(--bg) 60%, transparent);
+  padding: 8px 12px calc(16px + env(safe-area-inset-bottom, 0px));
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .omnix-input-footer {
+    background: none;
+    padding: 8px 16px 14px;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -2956,14 +2973,14 @@ input, textarea, select {
 }
 
 .omnix-input-ring {
-  background: conic-gradient(from var(--angle, 0deg), #6366f126, #8b5cf614, #06b6d40f, #6366f126);
+  background: conic-gradient(from var(--angle, 0deg), #6366f1, #8b5cf6, #a855f7, #06b6d4, #6366f1);
   -webkit-mask-composite: xor;
-  opacity: .5;
+  opacity: .7;
   pointer-events: none;
   border-radius: 18px;
   padding: 1.5px;
-  transition: opacity .4s;
-  animation: 6s linear infinite input-border-spin;
+  transition: opacity .4s, filter .4s;
+  animation: 4s linear infinite input-border-spin;
   position: absolute;
   inset: 0;
   -webkit-mask-image: linear-gradient(#fff 0 0), linear-gradient(#fff 0 0);
@@ -2985,10 +3002,10 @@ input, textarea, select {
 }
 
 .omnix-input-ring-active {
-  background: conic-gradient(from var(--angle, 0deg), #6366f1, #a855f7, #c026d3, #06b6d4, #6366f1);
+  background: conic-gradient(from var(--angle, 0deg), #6366f1, #a855f7, #c026d3, #06b6d4, #22d3ee, #6366f1);
   opacity: 1;
   filter: blur(.5px);
-  animation: 3s linear infinite input-border-spin;
+  animation: 2.5s linear infinite input-border-spin;
 }
 
 .omnix-mic-btn {

@@ -287,7 +287,7 @@ export default function AuthPage() {
 
         {/* Footer */}
         <p className="mt-8 text-center text-[10px] tracking-wide" style={{ color: "var(--t3)", animation: "stagger-fade-up 0.4s ease 0.4s both" }}>
-          Secured by Firebase · Powered by Gemini
+          Secured by Firebase · Powered by Omnix
         </p>
       </div>
     </div>

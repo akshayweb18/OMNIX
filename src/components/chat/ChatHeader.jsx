@@ -28,7 +28,7 @@ export default function ChatHeader({ onMenuToggle, onNewChat }) {
   return (
     <>
       <header style={{
-        position: "relative", flexShrink: 0, height: 56,
+        position: "relative", zIndex: 100, flexShrink: 0, height: 56,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 16px", gap: 12,
         background: "rgba(6,10,35,0.72)",
@@ -65,8 +65,8 @@ export default function ChatHeader({ onMenuToggle, onNewChat }) {
           </button>
         </div>
 
-        {/* Right side */}
-        <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+        {/* Right side — high z-index so profile / logout menu stays above scroll content */}
+        <div style={{ position: "relative", zIndex: 110, display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
           {/* New Chat — desktop text button */}
           <button onClick={handleNew} className="omnix-desktop-only header-btn header-btn-ghost" style={{ alignItems: "center", gap: 6, padding: "8px 14px", fontSize: 12, fontWeight: 600, letterSpacing: "0.02em" }}>
             <svg style={{width:14,height:14}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -90,8 +90,8 @@ export default function ChatHeader({ onMenuToggle, onNewChat }) {
           </button>
 
           {/* User avatar dropdown */}
-          <div style={{ position: "relative" }} ref={menuRef}>
-            <button onClick={() => setMenuOpen(v => !v)} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, position: "relative" }}>
+          <div style={{ position: "relative", zIndex: 120 }} ref={menuRef}>
+            <button onClick={() => setMenuOpen(v => !v)} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, position: "relative", zIndex: 1 }}>
               {user?.photoURL ? (
                 <img src={user.photoURL} alt="" referrerPolicy="no-referrer" style={{ width: 36, height: 36, borderRadius: 12, objectFit: "cover", boxShadow: "0 8px 20px -10px rgba(99,102,241,0.65)", border: "1.5px solid rgba(129,140,248,0.35)" }} />
               ) : (
@@ -104,7 +104,7 @@ export default function ChatHeader({ onMenuToggle, onNewChat }) {
 
             {menuOpen && (
               <div className="animate-fade-in" style={{
-                position: "absolute", right: 0, top: 48, zIndex: 50, width: 240, borderRadius: 12, padding: 4,
+                position: "absolute", right: 0, top: 48, zIndex: 200, width: 240, borderRadius: 12, padding: 4,
                 background: "linear-gradient(155deg, rgba(13,19,47,0.96), rgba(14,18,40,0.94))",
                 border: "1px solid rgba(129,140,248,0.22)",
                 boxShadow: "0 20px 50px -12px rgba(0,0,0,0.7), 0 0 30px -8px rgba(99,102,241,0.25)",

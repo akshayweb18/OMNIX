@@ -1,29 +1,1199 @@
-[00:00:18.202] Server  LOG     ✓ Ready in 6.4s
-[00:00:21.902] Server  LOG     ○ Compiling / ...
-[00:00:33.641] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:47.709] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:27.006] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:43.747] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:09.796] Server  LOG     ✓ Compiled in 3.5s
-[00:05:18.071] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:08:06.422] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:14:16.413] Server  LOG     ✓ Compiled in 95ms
-[00:14:16.842] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:14.851] Server  LOG     ✓ Compiled in 7.1s
-[00:21:30.960] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:24:20.697] Server  LOG     ✓ Compiled in 550ms
-[00:24:22.952] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:26:03.956] Server  LOG     ✓ Compiled in 3.1s
-[00:27:24.994] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:31:15.625] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:32:00.950] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:32:29.871] Server  LOG     ✓ Compiled in 5.9s
-[00:36:16.498] Server  LOG     ✓ Compiled in 1755ms
-[00:37:09.802] Server  LOG     ✓ Compiled in 635ms
-[00:40:42.509] Server  LOG     ✓ Compiled in 730ms
-[00:41:10.289] Server  LOG     ✓ Compiled in 2.6s
-[00:41:45.191] Server  LOG     ✓ Compiled in 254ms
-[00:43:17.277] Server  LOG     ✓ Compiled in 278ms
-[00:44:00.094] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:46:45.363] Server  LOG     ✓ Compiled in 387ms
-[00:46:47.178] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:27.237] Server  LOG     ✓ Ready in 22.8s
+[00:00:30.473] Server  LOG     ○ Compiling / ...
+[00:02:13.354] Server  LOG     ✓ Finished writing to filesystem cache in 15.2s
+[00:02:17.509] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:21.958] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:26.438] Server  LOG     ○ Compiling /auth ...
+[00:02:29.444] Server  LOG     ✓ Finished filesystem cache database compaction in 18.6s
+[00:03:41.276] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:43.259] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <InnerScrollAndFocusHandler segmentPath={[...]} focusAndScrollRef={{apply:false, ...}}>
+      <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+        <LoadingBoundary name="auth/" loading={null}>
+          <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+            <RedirectBoundary>
+              <RedirectErrorBoundary router={{...}}>
+                <InnerLayoutRouter url="/auth" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} ...>
+                  <SegmentViewNode type="page" pagePath="auth/page.jsx">
+                    <SegmentTrieNode>
+                    <ClientPageRoot Component={function AuthPage} serverProvidedParams={{...}}>
+                      <AuthPage params={Promise} searchParams={Promise}>
+                        <div className="relative m..." style={{...}}>
+                          <Starfield>
+                            <div className="pointer-ev...">
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "82.78622310727775%"
+-                                 left: "12.3236%"
++                                 top: "95.65480697746113%"
+-                                 top: "62.2088%"
++                                 width: 0.7974224224238087
+-                                 width: "0.742326px"
++                                 height: 0.7974224224238087
+-                                 height: "0.742326px"
++                                 opacity: 0.2572138147506794
+-                                 opacity: "0.590321"
++                                 --dur: "2.602572970293087s"
+-                                 --dur: "4.8217845913679644s"
++                                 --delay: "0.4619045214214157s"
+-                                 --delay: "3.856342083835271s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "66.15488121892868%"
+-                                 left: "81.2274%"
++                                 top: "37.1604734475626%"
+-                                 top: "33.232%"
++                                 width: 2.704205715167718
+-                                 width: "1.89602px"
++                                 height: 2.704205715167718
+-                                 height: "1.89602px"
++                                 opacity: 0.49080345058430674
+-                                 opacity: "0.788206"
++                                 --dur: "5.917874469147348s"
+-                                 --dur: "4.767048558149023s"
++                                 --delay: "1.4706898975843608s"
+-                                 --delay: "1.9813539706832577s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "13.660957556893017%"
+-                                 left: "60.0043%"
++                                 top: "1.1703299340291462%"
+-                                 top: "20.8435%"
++                                 width: 1.1234334783936488
+-                                 width: "1.06482px"
++                                 height: 1.1234334783936488
+-                                 height: "1.06482px"
++                                 opacity: 0.6122706087155092
+-                                 opacity: "0.55189"
++                                 --dur: "2.7127669128396765s"
+-                                 --dur: "5.457132253416445s"
++                                 --delay: "3.7085359169096224s"
+-                                 --delay: "2.637229197581241s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "16.121541349095846%"
+-                                 left: "39.9465%"
++                                 top: "81.96334056930112%"
+-                                 top: "71.2382%"
++                                 width: 1.771990101860977
+-                                 width: "2.20782px"
++                                 height: 1.771990101860977
+-                                 height: "2.20782px"
++                                 opacity: 0.6532289316967764
+-                                 opacity: "0.579131"
++                                 --dur: "2.860645042443192s"
+-                                 --dur: "4.401242496578135s"
++                                 --delay: "1.9862639550969003s"
+-                                 --delay: "2.3993446249019317s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "46.083157984507075%"
+-                                 left: "96.8903%"
++                                 top: "9.13461040659378%"
+-                                 top: "66.8819%"
++                                 width: 0.5755922195637817
+-                                 width: "1.09993px"
++                                 height: 0.5755922195637817
+-                                 height: "1.09993px"
++                                 opacity: 0.6899104240368282
+-                                 opacity: "0.253563"
++                                 --dur: "2.3318185109914014s"
+-                                 --dur: "4.811210316383626s"
++                                 --delay: "4.9621182317837675s"
+-                                 --delay: "0.8138126096386883s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "32.047313771074%"
+-                                 left: "9.52423%"
++                                 top: "59.015632319822345%"
+-                                 top: "42.4553%"
++                                 width: 0.8121764525227483
+-                                 width: "1.59231px"
++                                 height: 0.8121764525227483
+-                                 height: "1.59231px"
++                                 opacity: 0.5751352528929404
+-                                 opacity: "0.761574"
++                                 --dur: "3.03841317884981s"
+-                                 --dur: "2.650366863077324s"
++                                 --delay: "4.3260346190073795s"
+-                                 --delay: "3.4301840744368874s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "70.2697015664419%"
+-                                 left: "0.305024%"
++                                 top: "66.65597566342387%"
+-                                 top: "11.8399%"
++                                 width: 2.344532981188558
+-                                 width: "0.643243px"
++                                 height: 2.344532981188558
+-                                 height: "0.643243px"
++                                 opacity: 0.6556720920676549
+-                                 opacity: "0.742717"
++                                 --dur: "5.253399271533099s"
+-                                 --dur: "5.3780802652919455s"
++                                 --delay: "4.860279621773307s"
+-                                 --delay: "3.5621979110457156s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "47.15527075691595%"
+-                                 left: "54.1372%"
++                                 top: "28.025942270131033%"
+-                                 top: "99.8159%"
++                                 width: 2.929863859114847
+-                                 width: "1.61599px"
++                                 height: 2.929863859114847
+-                                 height: "1.61599px"
++                                 opacity: 0.6628272950751593
+-                                 opacity: "0.395386"
++                                 --dur: "3.247150128278952s"
+-                                 --dur: "3.577418761709169s"
++                                 --delay: "3.2745974155034485s"
+-                                 --delay: "0.5119449191747988s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "36.90873684059699%"
+-                                 left: "18.3429%"
++                                 top: "60.86337497623195%"
+-                                 top: "78.3231%"
++                                 width: 1.7051355025841002
+-                                 width: "0.503335px"
++                                 height: 1.7051355025841002
+-                                 height: "0.503335px"
++                                 opacity: 0.5560850395172333
+-                                 opacity: "0.666666"
++                                 --dur: "2.695489725021949s"
+-                                 --dur: "4.495043440664528s"
++                                 --delay: "1.6528466798345753s"
+-                                 --delay: "4.331854735970148s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "19.502610241330686%"
+-                                 left: "14.4204%"
++                                 top: "64.42179890230004%"
+-                                 top: "86.2644%"
++                                 width: 2.4529677403527894
+-                                 width: "0.640371px"
++                                 height: 2.4529677403527894
+-                                 height: "0.640371px"
++                                 opacity: 0.5393873441590205
+-                                 opacity: "0.663336"
++                                 --dur: "2.7372751606813477s"
+-                                 --dur: "2.5739292915871266s"
++                                 --delay: "3.830878372975499s"
+-                                 --delay: "2.6870558491569425s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "63.71392945029773%"
+-                                 left: "87.5986%"
++                                 top: "40.80871837740227%"
+-                                 top: "72.0944%"
++                                 width: 1.245296821682894
+-                                 width: "2.45115px"
++                                 height: 1.245296821682894
+-                                 height: "2.45115px"
++                                 opacity: 0.3047638004780295
+-                                 opacity: "0.556707"
++                                 --dur: "4.425181462237921s"
+-                                 --dur: "3.2393055857642694s"
++                                 --delay: "4.385023539347362s"
+-                                 --delay: "2.763319625297634s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "89.10635225663239%"
+-                                 left: "77.5398%"
++                                 top: "58.30297334626703%"
+-                                 top: "23.18%"
++                                 width: 2.1543230324292573
+-                                 width: "1.46087px"
++                                 height: 2.1543230324292573
+-                                 height: "1.46087px"
++                                 opacity: 0.4531165973767442
+-                                 opacity: "0.42373"
++                                 --dur: "3.756824158448728s"
+-                                 --dur: "4.690867880393416s"
++                                 --delay: "1.9963002977880269s"
+-                                 --delay: "0.6218986621080252s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "38.51926155234779%"
+-                                 left: "58.9675%"
++                                 top: "25.4622993157803%"
+-                                 top: "60.6557%"
++                                 width: 2.7009372697600047
+-                                 width: "0.910361px"
++                                 height: 2.7009372697600047
+-                                 height: "0.910361px"
++                                 opacity: 0.5328571482823569
+-                                 opacity: "0.412913"
++                                 --dur: "3.599805462743472s"
+-                                 --dur: "3.8813818863926546s"
++                                 --delay: "3.3022122357243133s"
+-                                 --delay: "1.810041700385444s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "65.5956177491263%"
+-                                 left: "54.71%"
++                                 top: "80.87096488448718%"
+-                                 top: "96.69%"
++                                 width: 2.566189743887413
+-                                 width: "1.1268px"
++                                 height: 2.566189743887413
+-                                 height: "1.1268px"
++                                 opacity: 0.7369887061251446
+-                                 opacity: "0.23086"
++                                 --dur: "4.984973777977046s"
+-                                 --dur: "2.811863668933852s"
++                                 --delay: "4.399023671349109s"
+-                                 --delay: "4.145753773861138s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "93.06586922119327%"
+-                                 left: "83.2901%"
++                                 top: "11.027323217546359%"
+-                                 top: "72.7318%"
++                                 width: 2.066856674003183
+-                                 width: "2.39419px"
++                                 height: 2.066856674003183
+-                                 height: "2.39419px"
++                                 opacity: 0.578689321229804
+-                                 opacity: "0.430621"
++                                 --dur: "5.44978852815767s"
+-                                 --dur: "2.858052397473978s"
++                                 --delay: "3.347304721922191s"
+-                                 --delay: "2.2212246215280116s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "74.64977767785356%"
+-                                 left: "9.13095%"
++                                 top: "14.680373291984194%"
+-                                 top: "24.4633%"
++                                 width: 1.7866726887607705
+-                                 width: "2.02942px"
++                                 height: 1.7866726887607705
+-                                 height: "2.02942px"
++                                 opacity: 0.28432046655320664
+-                                 opacity: "0.357512"
++                                 --dur: "2.7401057171039023s"
+-                                 --dur: "3.8854088086396428s"
++                                 --delay: "3.213447279823072s"
+-                                 --delay: "2.3137781449023542s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "44.48254469873465%"
+-                                 left: "93.6412%"
++                                 top: "37.43492412914554%"
+-                                 top: "38.0231%"
++                                 width: 2.22253034708708
+-                                 width: "2.83062px"
++                                 height: 2.22253034708708
+-                                 height: "2.83062px"
++                                 opacity: 0.49408802990302547
+-                                 opacity: "0.48811"
++                                 --dur: "3.7780217547456565s"
+-                                 --dur: "5.232714297406633s"
++                                 --delay: "1.834855301805804s"
+-                                 --delay: "2.438256956135408s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "66.89997261149725%"
+-                                 left: "32.4941%"
++                                 top: "5.242069060202558%"
+-                                 top: "59.6371%"
++                                 width: 2.3042633922311806
+-                                 width: "1.83057px"
++                                 height: 2.3042633922311806
+-                                 height: "1.83057px"
++                                 opacity: 0.6323769041358329
+-                                 opacity: "0.609356"
++                                 --dur: "3.1854140097003567s"
+-                                 --dur: "4.32844854506154s"
++                                 --delay: "3.9324386098488153s"
+-                                 --delay: "1.0458708759058533s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "40.80305353578889%"
+-                                 left: "6.00842%"
++                                 top: "11.77688099764892%"
+-                                 top: "2.73798%"
++                                 width: 2.9601652534030833
+-                                 width: "1.63012px"
++                                 height: 2.9601652534030833
+-                                 height: "1.63012px"
++                                 opacity: 0.6930943283025311
+-                                 opacity: "0.508023"
++                                 --dur: "2.29628620053152s"
+-                                 --dur: "3.2857805023743283s"
++                                 --delay: "3.8363911825929407s"
+-                                 --delay: "3.969443987145791s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "24.23098309964704%"
+-                                 left: "0.0249539%"
++                                 top: "72.71499268506578%"
+-                                 top: "85.3334%"
++                                 width: 2.6511616187259333
+-                                 width: "2.463px"
++                                 height: 2.6511616187259333
+-                                 height: "2.463px"
++                                 opacity: 0.3928897781709628
+-                                 opacity: "0.67412"
++                                 --dur: "4.497549285611058s"
+-                                 --dur: "3.3262878797772704s"
++                                 --delay: "0.6946702387780374s"
+-                                 --delay: "1.064266366001586s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "47.63372747513491%"
+-                                 left: "12.8518%"
++                                 top: "74.35852760811888%"
+-                                 top: "64.355%"
++                                 width: 2.59463772591074
+-                                 width: "0.518673px"
++                                 height: 2.59463772591074
+-                                 height: "0.518673px"
++                                 opacity: 0.2301957385078867
+-                                 opacity: "0.777467"
++                                 --dur: "2.3732428555428884s"
+-                                 --dur: "5.585885167425651s"
++                                 --delay: "1.0054594608041256s"
+-                                 --delay: "3.5288818558539017s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "52.36131193310942%"
+-                                 left: "34.3524%"
++                                 top: "98.93655161677734%"
+-                                 top: "88.3487%"
++                                 width: 2.7776029887488605
+-                                 width: "2.90146px"
++                                 height: 2.7776029887488605
+-                                 height: "2.90146px"
++                                 opacity: 0.5410556295882446
+-                                 opacity: "0.69321"
++                                 --dur: "4.908894214366448s"
+-                                 --dur: "2.296026716408898s"
++                                 --delay: "4.330013979352437s"
+-                                 --delay: "0.9189664015841914s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "29.817907254174216%"
+-                                 left: "29.0749%"
++                                 top: "95.3721557187485%"
+-                                 top: "34.3417%"
++                                 width: 1.342743312921296
+-                                 width: "2.91393px"
++                                 height: 1.342743312921296
+-                                 height: "2.91393px"
++                                 opacity: 0.3558792513217116
+-                                 opacity: "0.368422"
++                                 --dur: "3.055636529908624s"
+-                                 --dur: "2.577540643889708s"
++                                 --delay: "3.1572268632097185s"
+-                                 --delay: "4.761073068056855s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "69.94429606732619%"
+-                                 left: "25.8041%"
++                                 top: "60.53783639456872%"
+-                                 top: "17.5223%"
++                                 width: 1.3038056754046827
+-                                 width: "2.4155px"
++                                 height: 1.3038056754046827
+-                                 height: "2.4155px"
++                                 opacity: 0.6898074730994614
+-                                 opacity: "0.501066"
++                                 --dur: "2.5835592413611836s"
+-                                 --dur: "4.87673488424434s"
++                                 --delay: "1.3720049600537032s"
+-                                 --delay: "3.675509542430371s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "9.562776248308092%"
+-                                 left: "91.336%"
++                                 top: "83.21073583896724%"
+-                                 top: "40.6351%"
++                                 width: 1.3163775306214314
+-                                 width: "0.873314px"
++                                 height: 1.3163775306214314
+-                                 height: "0.873314px"
++                                 opacity: 0.2988817020163306
+-                                 opacity: "0.714586"
++                                 --dur: "2.3789085730967936s"
+-                                 --dur: "2.795283073278501s"
++                                 --delay: "2.9173364101111323s"
+-                                 --delay: "3.3697824001839876s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "34.606757962626%"
+-                                 left: "33.7486%"
++                                 top: "35.831131910677726%"
+-                                 top: "7.68016%"
++                                 width: 1.689135772154405
+-                                 width: "2.3788px"
++                                 height: 1.689135772154405
+-                                 height: "2.3788px"
++                                 opacity: 0.37287243329798203
+-                                 opacity: "0.67951"
++                                 --dur: "3.473773360658421s"
+-                                 --dur: "4.024625931588822s"
++                                 --delay: "2.4308697319804615s"
+-                                 --delay: "1.9550038266650644s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "2.53231783080462%"
+-                                 left: "55.017%"
++                                 top: "39.80242209276857%"
+-                                 top: "82.8913%"
++                                 width: 1.5229485609384512
+-                                 width: "1.6579px"
++                                 height: 1.5229485609384512
+-                                 height: "1.6579px"
++                                 opacity: 0.7796742481549697
+-                                 opacity: "0.784884"
++                                 --dur: "2.5839213756581754s"
+-                                 --dur: "4.4468113151007245s"
++                                 --delay: "2.5626688972587837s"
+-                                 --delay: "3.354892287864839s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "34.475137099194974%"
+-                                 left: "43.3555%"
++                                 top: "56.683567902404285%"
+-                                 top: "42.8336%"
++                                 width: 2.213051657934668
+-                                 width: "0.997829px"
++                                 height: 2.213051657934668
+-                                 height: "0.997829px"
++                                 opacity: 0.5371001449965924
+-                                 opacity: "0.732333"
++                                 --dur: "3.6376271741440536s"
+-                                 --dur: "4.6933693648109s"
++                                 --delay: "1.7081763643452996s"
+-                                 --delay: "4.110289395105599s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "75.7332007179707%"
+-                                 left: "25.9864%"
++                                 top: "25.016450034798854%"
+-                                 top: "28.2712%"
++                                 width: 1.259471562175868
+-                                 width: "1.87572px"
++                                 height: 1.259471562175868
+-                                 height: "1.87572px"
++                                 opacity: 0.6382960030352263
+-                                 opacity: "0.451893"
++                                 --dur: "4.206308604287742s"
+-                                 --dur: "3.3655836952795424s"
++                                 --delay: "1.9368158744735064s"
+-                                 --delay: "3.4864624804663147s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "79.74635985084035%"
+-                                 left: "88.2446%"
++                                 top: "7.807027773824715%"
+-                                 top: "58.3637%"
++                                 width: 1.7497358674755896
+-                                 width: "2.38537px"
++                                 height: 1.7497358674755896
+-                                 height: "2.38537px"
++                                 opacity: 0.696916875595111
+-                                 opacity: "0.411387"
++                                 --dur: "3.2281466082524637s"
+-                                 --dur: "4.004738726037914s"
++                                 --delay: "3.299706156422478s"
+-                                 --delay: "3.95976337603462s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "7.286800090002476%"
+-                                 left: "87.1572%"
++                                 top: "74.28991400590577%"
+-                                 top: "97.9721%"
++                                 width: 2.935688300118279
+-                                 width: "1.31222px"
++                                 height: 2.935688300118279
+-                                 height: "1.31222px"
++                                 opacity: 0.5934577927682594
+-                                 opacity: "0.422309"
++                                 --dur: "5.257811239824035s"
+-                                 --dur: "3.8242887801430157s"
++                                 --delay: "4.414962132087229s"
+-                                 --delay: "1.6702374500068495s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "32.05422778943859%"
+-                                 left: "73.3405%"
++                                 top: "14.8827014654204%"
+-                                 top: "59.5895%"
++                                 width: 0.7490060712318148
+-                                 width: "1.23112px"
++                                 height: 0.7490060712318148
+-                                 height: "1.23112px"
++                                 opacity: 0.3113742969985146
+-                                 opacity: "0.45101"
++                                 --dur: "4.267430009841657s"
+-                                 --dur: "2.3610957959693506s"
++                                 --delay: "1.1070062247354018s"
+-                                 --delay: "0.6713429084497324s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "67.07492819459495%"
+-                                 left: "73.7448%"
++                                 top: "86.25263717930635%"
+-                                 top: "95.9954%"
++                                 width: 1.605031296390877
+-                                 width: "0.534241px"
++                                 height: 1.605031296390877
+-                                 height: "0.534241px"
++                                 opacity: 0.7854303390545818
+-                                 opacity: "0.290041"
++                                 --dur: "5.576610236328932s"
+-                                 --dur: "5.265951229689833s"
++                                 --delay: "3.7187955823242733s"
+-                                 --delay: "0.927069778443948s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "2.5960593155804568%"
+-                                 left: "59.0877%"
++                                 top: "10.780166967739413%"
+-                                 top: "52.2006%"
++                                 width: 2.8499787176081943
+-                                 width: "1.7988px"
++                                 height: 2.8499787176081943
+-                                 height: "1.7988px"
++                                 opacity: 0.20880712814415436
+-                                 opacity: "0.540676"
++                                 --dur: "4.898823426064186s"
+-                                 --dur: "3.9303905867754803s"
++                                 --delay: "0.9145013380874673s"
+-                                 --delay: "0.7751660625631657s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "35.58903346639806%"
+-                                 left: "61.3384%"
++                                 top: "94.65653761442654%"
+-                                 top: "46.0998%"
++                                 width: 1.5122559400548399
+-                                 width: "2.3346px"
++                                 height: 1.5122559400548399
+-                                 height: "2.3346px"
++                                 opacity: 0.4951367192025284
+-                                 opacity: "0.787251"
++                                 --dur: "5.0574196620976455s"
+-                                 --dur: "2.8021388026630065s"
++                                 --delay: "4.2497727124990075s"
+-                                 --delay: "0.018199999795527888s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "26.000981692167425%"
+-                                 left: "5.95783%"
++                                 top: "21.6196008220899%"
+-                                 top: "0.5409%"
++                                 width: 1.8393485210037293
+-                                 width: "2.92084px"
++                                 height: 1.8393485210037293
+-                                 height: "2.92084px"
++                                 opacity: 0.3202479564753377
+-                                 opacity: "0.341358"
++                                 --dur: "2.980885455087728s"
+-                                 --dur: "2.876118567921849s"
++                                 --delay: "1.4353709961603318s"
+-                                 --delay: "1.5017083359068768s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "75.84231837110958%"
+-                                 left: "59.8425%"
++                                 top: "19.286189864703353%"
+-                                 top: "53.4869%"
++                                 width: 2.7155163967941673
+-                                 width: "0.891417px"
++                                 height: 2.7155163967941673
+-                                 height: "0.891417px"
++                                 opacity: 0.32392909037047285
+-                                 opacity: "0.607444"
++                                 --dur: "4.216745788931539s"
+-                                 --dur: "2.1648150070295284s"
++                                 --delay: "2.527942605243589s"
+-                                 --delay: "4.787206314783253s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "82.1073099621612%"
+-                                 left: "3.70186%"
++                                 top: "45.41633319702616%"
+-                                 top: "73.1686%"
++                                 width: 2.3232638189431283
+-                                 width: "2.21931px"
++                                 height: 2.3232638189431283
+-                                 height: "2.21931px"
++                                 opacity: 0.6969585903954534
+-                                 opacity: "0.366647"
++                                 --dur: "4.704749902511555s"
+-                                 --dur: "4.75080668050483s"
++                                 --delay: "1.5812490288129244s"
+-                                 --delay: "2.7139112608014058s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "33.09963672235845%"
+-                                 left: "76.1125%"
++                                 top: "69.82204550807236%"
+-                                 top: "27.1739%"
++                                 width: 0.8327354089554382
+-                                 width: "1.90864px"
++                                 height: 0.8327354089554382
+-                                 height: "1.90864px"
++                                 opacity: 0.4906369771856525
+-                                 opacity: "0.238033"
++                                 --dur: "4.110549763306997s"
+-                                 --dur: "5.726762881831722s"
++                                 --delay: "2.1686494213048246s"
+-                                 --delay: "1.5524328913473568s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "61.58795427943722%"
+-                                 left: "61.7237%"
++                                 top: "79.23448790288961%"
+-                                 top: "25.2067%"
++                                 width: 2.004067607855571
+-                                 width: "1.88752px"
++                                 height: 2.004067607855571
+-                                 height: "1.88752px"
++                                 opacity: 0.6324618136977936
+-                                 opacity: "0.786674"
++                                 --dur: "4.886207145715842s"
+-                                 --dur: "4.479715973374054s"
++                                 --delay: "0.2900058395776689s"
+-                                 --delay: "3.1575671980457214s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "70.90265626165707%"
+-                                 left: "62.7408%"
++                                 top: "18.897215446101235%"
+-                                 top: "32.6938%"
++                                 width: 1.955781877507549
+-                                 width: "2.03614px"
++                                 height: 1.955781877507549
+-                                 height: "2.03614px"
++                                 opacity: 0.41310942024581243
+-                                 opacity: "0.324634"
++                                 --dur: "5.840289386028714s"
+-                                 --dur: "5.553697670936964s"
++                                 --delay: "4.80578502310353s"
+-                                 --delay: "1.2851168213757735s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "67.83370458053118%"
+-                                 left: "86.5148%"
++                                 top: "38.55392462722532%"
+-                                 top: "55.3728%"
++                                 width: 0.7189438488874849
+-                                 width: "0.783896px"
++                                 height: 0.7189438488874849
+-                                 height: "0.783896px"
++                                 opacity: 0.6618211560612439
+-                                 opacity: "0.75442"
++                                 --dur: "2.0486528564084363s"
+-                                 --dur: "5.479208615550892s"
++                                 --delay: "2.706801505128325s"
+-                                 --delay: "4.43537779311099s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "33.67479416785565%"
+-                                 left: "27.4762%"
++                                 top: "94.19959634341241%"
+-                                 top: "97.5917%"
++                                 width: 2.6808176366836394
+-                                 width: "0.928753px"
++                                 height: 2.6808176366836394
+-                                 height: "0.928753px"
++                                 opacity: 0.24184932905518264
+-                                 opacity: "0.345708"
++                                 --dur: "5.181846565569417s"
+-                                 --dur: "5.082394643623578s"
++                                 --delay: "4.120136484533584s"
+-                                 --delay: "2.324089166620003s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "58.075850001629746%"
+-                                 left: "12.8808%"
++                                 top: "97.12311638596863%"
+-                                 top: "40.6496%"
++                                 width: 1.1084454692973935
+-                                 width: "1.44318px"
++                                 height: 1.1084454692973935
+-                                 height: "1.44318px"
++                                 opacity: 0.3885333308035379
+-                                 opacity: "0.687197"
++                                 --dur: "5.515379391753061s"
+-                                 --dur: "3.388614804221398s"
++                                 --delay: "1.0627178387631842s"
+-                                 --delay: "0.07400407341431159s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "42.3881911913351%"
+-                                 left: "8.76571%"
++                                 top: "49.02771085341341%"
+-                                 top: "30.3339%"
++                                 width: 2.517052245153553
+-                                 width: "1.1953px"
++                                 height: 2.517052245153553
+-                                 height: "1.1953px"
++                                 opacity: 0.6071460770864457
+-                                 opacity: "0.713623"
++                                 --dur: "5.472690844327817s"
+-                                 --dur: "3.9126445967439922s"
++                                 --delay: "3.91570226921501s"
+-                                 --delay: "4.164964501732119s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "6.756707097678216%"
+-                                 left: "27.4683%"
++                                 top: "98.95891443728198%"
+-                                 top: "87.6122%"
++                                 width: 2.9926048367184404
+-                                 width: "2.71902px"
++                                 height: 2.9926048367184404
+-                                 height: "2.71902px"
++                                 opacity: 0.32245376702638934
+-                                 opacity: "0.518493"
++                                 --dur: "5.32936199908791s"
+-                                 --dur: "4.719829882279972s"
++                                 --delay: "1.4345672828732625s"
+-                                 --delay: "2.7381043161875214s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "8.729538528332492%"
+-                                 left: "87.7998%"
++                                 top: "10.887488409618273%"
+-                                 top: "45.1591%"
++                                 width: 1.4362831402148926
+-                                 width: "2.8571px"
++                                 height: 1.4362831402148926
+-                                 height: "2.8571px"
++                                 opacity: 0.5487099783630254
+-                                 opacity: "0.446877"
++                                 --dur: "3.9880386679758897s"
+-                                 --dur: "4.673858720617542s"
++                                 --delay: "0.7545232941102253s"
+-                                 --delay: "1.9140596583139295s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "40.62784936484596%"
+-                                 left: "74.0967%"
++                                 top: "22.502128482665352%"
+-                                 top: "59.1469%"
++                                 width: 2.0128402871093525
+-                                 width: "0.953037px"
++                                 height: 2.0128402871093525
+-                                 height: "0.953037px"
++                                 opacity: 0.3148044654274079
+-                                 opacity: "0.722471"
++                                 --dur: "3.92065577648834s"
+-                                 --dur: "5.794615886786865s"
++                                 --delay: "2.2850295458492527s"
+-                                 --delay: "3.252892778717374s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "96.7138441467126%"
+-                                 left: "35.5128%"
++                                 top: "99.34456163172263%"
+-                                 top: "71.2436%"
++                                 width: 1.0470141223831793
+-                                 width: "1.05541px"
++                                 height: 1.0470141223831793
+-                                 height: "1.05541px"
++                                 opacity: 0.7626073358797103
+-                                 opacity: "0.722757"
++                                 --dur: "4.881732704663939s"
+-                                 --dur: "5.697596732706596s"
++                                 --delay: "2.158462372858671s"
+-                                 --delay: "0.8624177993383808s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "46.95706262349879%"
+-                                 left: "31.7553%"
++                                 top: "63.94617388042546%"
+-                                 top: "75.3868%"
++                                 width: 2.2850939887052224
+-                                 width: "1.25836px"
++                                 height: 2.2850939887052224
+-                                 height: "1.25836px"
++                                 opacity: 0.501742539843244
+-                                 opacity: "0.206341"
++                                 --dur: "3.6539775259033136s"
+-                                 --dur: "5.987842772870621s"
++                                 --delay: "1.9067657120362473s"
+-                                 --delay: "3.7569388439227955s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "78.91370454329277%"
+-                                 left: "60.0466%"
++                                 top: "18.99799077585739%"
+-                                 top: "96.3332%"
++                                 width: 1.0968197324528521
+-                                 width: "1.7281px"
++                                 height: 1.0968197324528521
+-                                 height: "1.7281px"
++                                 opacity: 0.6350725176951841
+-                                 opacity: "0.317605"
++                                 --dur: "3.614499633977204s"
+-                                 --dur: "4.030360241741714s"
++                                 --delay: "2.2872407431298116s"
+-                                 --delay: "2.2918436150150647s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "71.84103710521607%"
+-                                 left: "56.1269%"
++                                 top: "51.01991348607168%"
+-                                 top: "65.1475%"
++                                 width: 0.709900672431421
+-                                 width: "1.39555px"
++                                 height: 0.709900672431421
+-                                 height: "1.39555px"
++                                 opacity: 0.2755108567565188
+-                                 opacity: "0.634853"
++                                 --dur: "5.318695197781874s"
+-                                 --dur: "3.6369827198145495s"
++                                 --delay: "3.5367320007834064s"
+-                                 --delay: "4.538212332801729s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "59.52972558991028%"
+-                                 left: "95.7346%"
++                                 top: "38.65282408484214%"
+-                                 top: "84.0895%"
++                                 width: 1.060110303608966
+-                                 width: "2.08725px"
++                                 height: 1.060110303608966
+-                                 height: "2.08725px"
++                                 opacity: 0.7179470155494776
+-                                 opacity: "0.229606"
++                                 --dur: "4.989053203526533s"
+-                                 --dur: "5.582504064862401s"
++                                 --delay: "3.7091566810770766s"
+-                                 --delay: "1.7940980849809933s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "86.09479957700643%"
+-                                 left: "93.1145%"
++                                 top: "51.18145326290347%"
+-                                 top: "60.001%"
++                                 width: 2.813589353316849
+-                                 width: "2.15709px"
++                                 height: 2.813589353316849
+-                                 height: "2.15709px"
++                                 opacity: 0.2633026079410612
+-                                 opacity: "0.532192"
++                                 --dur: "5.923504123868908s"
+-                                 --dur: "5.740356384458458s"
++                                 --delay: "3.6530478562789193s"
+-                                 --delay: "1.8422711468637027s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "0.3919676398307148%"
+-                                 left: "66.4446%"
++                                 top: "48.40603368871%"
+-                                 top: "26.2289%"
++                                 width: 2.2547830465336824
+-                                 width: "0.995992px"
++                                 height: 2.2547830465336824
+-                                 height: "0.995992px"
++                                 opacity: 0.6348712633218755
+-                                 opacity: "0.577747"
++                                 --dur: "3.128124265828742s"
+-                                 --dur: "3.631278562429648s"
++                                 --delay: "0.3117879933075457s"
+-                                 --delay: "2.941723941340346s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "11.525411719877976%"
+-                                 left: "33.5905%"
++                                 top: "88.50929198672208%"
+-                                 top: "89.9894%"
++                                 width: 2.3835032036196697
+-                                 width: "2.38974px"
++                                 height: 2.3835032036196697
+-                                 height: "2.38974px"
++                                 opacity: 0.22662166715032495
+-                                 opacity: "0.737295"
++                                 --dur: "4.8664255912185s"
+-                                 --dur: "2.340073678867653s"
++                                 --delay: "1.9710443323378368s"
+-                                 --delay: "1.0232274982468463s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "17.409474128964774%"
+-                                 left: "9.71579%"
++                                 top: "72.53682801894537%"
+-                                 top: "69.4007%"
++                                 width: 2.2137324488374075
+-                                 width: "2.63052px"
++                                 height: 2.2137324488374075
+-                                 height: "2.63052px"
++                                 opacity: 0.39229439989934267
+-                                 opacity: "0.392338"
++                                 --dur: "2.6691279019595706s"
+-                                 --dur: "4.8018888697420214s"
++                                 --delay: "0.3024256697477712s"
+-                                 --delay: "2.7665280663963916s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "10.275361330781617%"
+-                                 left: "93.2652%"
++                                 top: "0.8495775127363991%"
+-                                 top: "85.1259%"
++                                 width: 1.4273509855464046
+-                                 width: "0.902328px"
++                                 height: 1.4273509855464046
+-                                 height: "0.902328px"
++                                 opacity: 0.5180310626067819
+-                                 opacity: "0.385295"
++                                 --dur: "5.377907984639453s"
+-                                 --dur: "4.408613404201397s"
++                                 --delay: "4.808962016849562s"
+-                                 --delay: "2.8033806304695914s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "97.76932525875061%"
+-                                 left: "45.6667%"
++                                 top: "61.489246485763026%"
+-                                 top: "47.1899%"
++                                 width: 0.8641389241522586
+-                                 width: "1.96367px"
++                                 height: 0.8641389241522586
+-                                 height: "1.96367px"
++                                 opacity: 0.7252312756413368
+-                                 opacity: "0.48723"
++                                 --dur: "4.995733366626645s"
+-                                 --dur: "5.181073260913288s"
++                                 --delay: "0.773149400221107s"
+-                                 --delay: "3.7618819599090356s"
+                                }}
+                              >
+                              <div
+                                className="star-field-dot"
+                                style={{
++                                 left: "67.84343769896545%"
+-                                 left: "39.1356%"
++                                 top: "95.96483595193807%"
+-                                 top: "89.7563%"
++                                 width: 2.771997445166409
+-                                 width: "2.36955px"
++                                 height: 2.771997445166409
+-                                 height: "2.36955px"
++                                 opacity: 0.2003779571533043
+-                                 opacity: "0.30979"
++                                 --dur: "2.418660298105866s"
+-                                 --dur: "3.2636032298419453s"
++                                 --delay: "3.293206434391858s"
+-                                 --delay: "2.2582218707367674s"
+                                }}
+                              >
+                          ...
+                  ...
+                ...
+      ...
+
+[00:03:58.621] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:59.010] Server  LOG     ✓ Finished writing to filesystem cache in 83s
+[00:04:11.615] Server  LOG     ○ Compiling /api/chat ...
+[00:05:30.581] Server  ERROR   FULL ERROR: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-001:streamGenerateContent?alt=sse: [429 Too Many Requests] You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. 
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 0, model: gemini-2.0-flash
+* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_input_token_count, limit: 0, model: gemini-2.0-flash
+Please retry in 29.965477477s. [{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerDayPerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests","quotaId":"GenerateRequestsPerMinutePerProjectPerModel-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash"}},{"quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count","quotaId":"GenerateContentInputTokensPerModelPerMinute-FreeTier","quotaDimensions":{"location":"global","model":"gemini-2.0-flash"}}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"29s"}]
+[00:05:30.700] Server  LOG     ✓ Finished filesystem cache database compaction in 66s
+[00:05:30.701] Server  LOG     ✓ Finished writing to filesystem cache in 68s
+[00:05:30.749] Server  LOG     ✓ Finished filesystem cache database compaction in 18.3s
+[00:05:30.800] Server  LOG     ✓ Finished writing to filesystem cache in 19.0s
+[00:05:32.764] Browser ERROR   Chat error: {}
+[00:08:49.186] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:09:50.317] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:45.129] Server  LOG     ✓ Finished writing to filesystem cache in 16.4s
+[00:15:45.132] Server  LOG     ✓ Finished writing to filesystem cache in 11.9s
+[00:15:45.587] Server  LOG     ✓ Compiled in 116ms
+[00:15:47.929] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

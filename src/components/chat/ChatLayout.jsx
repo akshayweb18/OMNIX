@@ -381,13 +381,13 @@ export default function ChatLayout() {
       </div>
 
       {/* ═══ MAIN CHAT AREA — always visible ═══ */}
-      <div style={{ display: "flex", flexDirection: "column", flex: 1, minWidth: 0, height: "100%" }}>
+      <div style={{ display: "flex", flexDirection: "column", flex: 1, minWidth: 0, height: "100%", position: "relative", zIndex: 1 }}>
 
         {/* Header */}
         <ChatHeader onMenuToggle={() => setSidebarOpen(v => !v)} onNewChat={handleNewChat} />
 
-        {/* Messages area */}
-        <div style={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
+        {/* Messages area — isolate stacking so animated content cannot paint over the header */}
+        <div style={{ flex: 1, minHeight: 0, overflow: "hidden", position: "relative", zIndex: 0, isolation: "isolate" }}>
           <div ref={scrollRef} style={{ height: "100%", overflowY: "auto", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}>
             {messages.length === 0 && !loading ? (
               <div style={{ display: "flex", minHeight: "100%", alignItems: "center", justifyContent: "center", padding: "24px 16px" }}>
