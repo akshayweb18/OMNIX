@@ -770,10 +770,6 @@
     display: flex;
   }
 
-  .grid {
-    display: grid;
-  }
-
   .hidden {
     display: none;
   }
@@ -1977,7 +1973,57 @@ input, textarea, select {
 }
 
 .omnix-app-shell {
+  box-sizing: border-box;
   height: 100dvh;
+  min-height: 0;
+  max-height: 100dvh;
+}
+
+.omnix-chat-root {
+  background: var(--bg);
+  box-sizing: border-box;
+  flex: 1 1 0;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.omnix-welcome-shell {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8px 12px 24px;
+}
+
+@media (min-width: 1024px) {
+  .omnix-welcome-shell {
+    padding: 20px 16px 32px;
+  }
+}
+
+.omnix-messages-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  overflow-anchor: none;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden auto;
+}
+
+.welcome-prompt-grid {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 10px;
+  width: 100%;
+  display: grid;
+}
+
+@media (min-width: 520px) {
+  .welcome-prompt-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
 }
 
 .omnix-input-footer {

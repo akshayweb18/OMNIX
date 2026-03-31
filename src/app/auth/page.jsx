@@ -15,23 +15,39 @@ const GoogleIcon = () => (
 );
 
 function Starfield() {
-  const stars = useMemo(() =>
-    Array.from({ length: 60 }, (_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      size: Math.random() * 2.5 + 0.5,
-      dur: `${Math.random() * 4 + 2}s`,
-      delay: `${Math.random() * 5}s`,
-      opacity: Math.random() * 0.6 + 0.2,
-    })),
-  []);
+  const [stars, setStars] = useState([]);
+
+  /* Random layout must not run during SSR — server vs client Math.random() caused hydration mismatches. */
+  useEffect(() => {
+    setStars(
+      Array.from({ length: 60 }, (_, i) => ({
+        id: i,
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        size: Math.random() * 2.5 + 0.5,
+        dur: `${Math.random() * 4 + 2}s`,
+        delay: `${Math.random() * 5}s`,
+        opacity: Math.random() * 0.6 + 0.2,
+      }))
+    );
+  }, []);
 
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       {stars.map((s) => (
-        <div key={s.id} className="star-field-dot"
-          style={{ left: s.left, top: s.top, width: s.size, height: s.size, opacity: s.opacity, "--dur": s.dur, "--delay": s.delay }} />
+        <div
+          key={s.id}
+          className="star-field-dot"
+          style={{
+            left: s.left,
+            top: s.top,
+            width: `${s.size}px`,
+            height: `${s.size}px`,
+            opacity: s.opacity,
+            "--dur": s.dur,
+            "--delay": s.delay,
+          }}
+        />
       ))}
     </div>
   );

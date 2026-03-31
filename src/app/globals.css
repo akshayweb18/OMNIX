@@ -64,6 +64,58 @@ input, textarea, select { font-size: 16px; }
 .omnix-app-shell {
   height: 100vh;
   height: 100dvh;
+  max-height: 100vh;
+  max-height: 100dvh;
+  min-height: 0;
+  box-sizing: border-box;
+}
+
+/* Fills flex page shell — avoids nested 100dvh + document scroll pushing the hero off-screen on phones */
+.omnix-chat-root {
+  display: flex;
+  flex: 1 1 0;
+  min-height: 0;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Welcome: top-aligned only — vertical center + min-height 100% caused “mid scroll” hiding avatar/logo on phones */
+.omnix-welcome-shell {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 12px 24px;
+}
+@media (min-width: 1024px) {
+  .omnix-welcome-shell {
+    padding: 20px 16px 32px;
+  }
+}
+
+.omnix-messages-scroll {
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  overflow-anchor: none;
+}
+
+.welcome-prompt-grid {
+  display: grid;
+  width: 100%;
+  gap: 10px;
+  grid-template-columns: minmax(0, 1fr);
+}
+@media (min-width: 520px) {
+  .welcome-prompt-grid {
+    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .omnix-input-footer {

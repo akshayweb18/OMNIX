@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import ChatHeader from "./ChatHeader";
 import ChatList from "./ChatList";
 import ChatInput from "./ChatInput";
@@ -210,17 +210,38 @@ function SidebarContent({ activeChatId, sessions, onSelect, onNew, onDelete, onC
 }
 
 /* ─── Welcome Screen ───────────────────────────────────────── */
-function WelcomeScreen({ onSend, user }) {
+function WelcomeScreen({ onSend, user, onPinToTop }) {
   const firstName = (user?.displayName || user?.email?.split("@")[0] || "").split(" ")[0];
   const greeting = getTimeGreeting();
 
+  useLayoutEffect(() => {
+    if (!onPinToTop) return;
+    onPinToTop();
+    let inner = 0;
+    const outer = requestAnimationFrame(() => {
+      inner = requestAnimationFrame(() => onPinToTop());
+    });
+    return () => {
+      cancelAnimationFrame(outer);
+      cancelAnimationFrame(inner);
+    };
+  }, [onPinToTop, user?.photoURL]);
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "24px 0" }}>
-      {/* Avatar */}
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "16px 0 8px" }}>
+      {/* Avatar — fixed dimensions reduce layout shift; onLoad re-pins scroll after photo decodes (mobile). */}
       <div className="animate-scale-in" style={{ animationDelay: "0.1s" }}>
         {user?.photoURL ? (
           <div className="avatar-glow-ring" style={{ marginBottom: 16, display: "inline-block", borderRadius: 16 }}>
-            <img src={user.photoURL} alt="" referrerPolicy="no-referrer" style={{ width: 64, height: 64, borderRadius: 16, objectFit: "cover", boxShadow: "0 24px 60px -18px rgba(67,56,202,0.7)" }} />
+            <img
+              src={user.photoURL}
+              alt=""
+              width={64}
+              height={64}
+              referrerPolicy="no-referrer"
+              onLoad={() => onPinToTop?.()}
+              style={{ width: 64, height: 64, borderRadius: 16, objectFit: "cover", boxShadow: "0 24px 60px -18px rgba(67,56,202,0.7)", display: "block" }}
+            />
           </div>
         ) : (
           <div className="animate-float" style={{ marginBottom: 16, display: "inline-flex", width: 64, height: 64, alignItems: "center", justifyContent: "center", borderRadius: 16, background: "linear-gradient(135deg, #4338ca 0%, #6d28d9 55%, #7e22ce 100%)", boxShadow: "0 24px 60px -18px rgba(67,56,202,0.8)", fontSize: 24, fontWeight: 900, color: "white" }}>
@@ -244,7 +265,7 @@ function WelcomeScreen({ onSend, user }) {
       </p>
 
       {/* Prompt cards */}
-      <div style={{ marginTop: 24, display: "grid", width: "100%", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 12 }}>
+      <div className="welcome-prompt-grid" style={{ marginTop: 24 }}>
         {PROMPTS.map((p, i) => (
           <button key={p.label} onClick={() => onSend(p.text)}
             className="prompt-card-creative"
@@ -276,6 +297,8 @@ export default function ChatLayout() {
   const { user, signOut } = useAuth();
   const bottomRef = useRef(null);
   const scrollRef = useRef(null);
+  const welcomeShellRef = useRef(null);
+  const welcomeOpenedAt = useRef(0);
 
   const [activeChatId, setActiveChatId] = useState(null);
   const [sessions, setSessions]         = useState([]);
@@ -305,8 +328,97 @@ export default function ChatLayout() {
   }, [messages, speak]);
 
   useEffect(() => {
+    if (typeof window === "undefined" || !("scrollRestoration" in window.history)) return;
+    const prev = window.history.scrollRestoration;
+    window.history.scrollRestoration = "manual";
+    return () => {
+      window.history.scrollRestoration = prev;
+    };
+  }, []);
+
+  const scrollThreadToTop = useCallback(() => {
     const el = scrollRef.current;
-    if (!el) { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); return; }
+    if (el) el.scrollTop = 0;
+    if (typeof document !== "undefined") {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+    if (typeof window !== "undefined") window.scrollTo(0, 0);
+  }, []);
+
+  /* Empty welcome: always start at top (browser restore + chat auto-scroll must not apply). */
+  useLayoutEffect(() => {
+    if (messages.length > 0) return;
+    scrollThreadToTop();
+  }, [messages.length, loading, scrollThreadToTop]);
+
+  useEffect(() => {
+    if (messages.length > 0) return;
+    let alive = true;
+    const run = () => {
+      if (alive) scrollThreadToTop();
+    };
+    run();
+    const raf = requestAnimationFrame(() => requestAnimationFrame(run));
+    const t0 = setTimeout(run, 0);
+    const t1 = setTimeout(run, 180);
+    const t2 = setTimeout(run, 450);
+    const t3 = setTimeout(run, 900);
+    const t4 = setTimeout(run, 1600);
+    return () => {
+      alive = false;
+      cancelAnimationFrame(raf);
+      clearTimeout(t0);
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+      clearTimeout(t4);
+    };
+  }, [messages.length, loading, scrollThreadToTop]);
+
+  useEffect(() => {
+    if (messages.length === 0 && !loading) welcomeOpenedAt.current = Date.now();
+  }, [messages.length, loading]);
+
+  /* Profile image / fonts changing height: keep hero at top if user hasn’t scrolled yet. */
+  useEffect(() => {
+    if (messages.length > 0 || loading) return;
+    const shell = welcomeShellRef.current;
+    const sc = scrollRef.current;
+    if (!shell || !sc || typeof ResizeObserver === "undefined") return;
+    let raf = 0;
+    const ro = new ResizeObserver(() => {
+      if (Date.now() - welcomeOpenedAt.current > 5000) return;
+      if (sc.scrollTop > 140) return;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        sc.scrollTop = 0;
+        scrollThreadToTop();
+      });
+    });
+    ro.observe(shell);
+    return () => {
+      ro.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [messages.length, loading, scrollThreadToTop]);
+
+  useEffect(() => {
+    const onPageShow = () => {
+      if (messages.length > 0) return;
+      scrollThreadToTop();
+    };
+    window.addEventListener("pageshow", onPageShow);
+    return () => window.removeEventListener("pageshow", onPageShow);
+  }, [messages.length, scrollThreadToTop]);
+
+  useEffect(() => {
+    if (!messages.length) return;
+    const el = scrollRef.current;
+    if (!el) {
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
     if (el.scrollHeight - el.clientHeight - el.scrollTop < 220) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
   }, [messages, loading]);
 
@@ -345,7 +457,7 @@ export default function ChatLayout() {
   const sp = { activeChatId, sessions, onSelect: handleSelectChat, onNew: handleNewChat, onDelete: handleDeleteChat, user, onSignOut: signOut };
 
   return (
-    <div className="omnix-app-shell" style={{ display: "flex", width: "100%", overflow: "hidden", background: "var(--bg)", position: "relative" }}>
+    <div className="omnix-chat-root">
 
       {/* ═══ SIDEBAR — desktop: inline, mobile: absolute overlay ═══ */}
 
@@ -381,18 +493,18 @@ export default function ChatLayout() {
       </div>
 
       {/* ═══ MAIN CHAT AREA — always visible ═══ */}
-      <div style={{ display: "flex", flexDirection: "column", flex: 1, minWidth: 0, height: "100%", position: "relative", zIndex: 1 }}>
+      <div style={{ display: "flex", flexDirection: "column", flex: 1, minWidth: 0, minHeight: 0, height: "100%", position: "relative", zIndex: 1 }}>
 
         {/* Header */}
         <ChatHeader onMenuToggle={() => setSidebarOpen(v => !v)} onNewChat={handleNewChat} />
 
         {/* Messages area — isolate stacking so animated content cannot paint over the header */}
         <div style={{ flex: 1, minHeight: 0, overflow: "hidden", position: "relative", zIndex: 0, isolation: "isolate" }}>
-          <div ref={scrollRef} style={{ height: "100%", overflowY: "auto", WebkitOverflowScrolling: "touch", overscrollBehavior: "contain" }}>
+          <div ref={scrollRef} className="omnix-messages-scroll">
             {messages.length === 0 && !loading ? (
-              <div style={{ display: "flex", minHeight: "100%", alignItems: "center", justifyContent: "center", padding: "24px 16px" }}>
-                <div style={{ width: "100%", maxWidth: 720 }}>
-                  <WelcomeScreen onSend={handleSend} user={user} />
+              <div ref={welcomeShellRef} className="omnix-welcome-shell">
+                <div style={{ width: "100%", maxWidth: 720, margin: "0 auto" }}>
+                  <WelcomeScreen onSend={handleSend} user={user} onPinToTop={scrollThreadToTop} />
                 </div>
               </div>
             ) : (
