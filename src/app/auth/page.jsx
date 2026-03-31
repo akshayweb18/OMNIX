@@ -164,7 +164,7 @@ export default function AuthPage() {
 
           <h1 className="text-3xl sm:text-4xl font-black tracking-widest brand-gradient">OMNIX</h1>
           <p className="mt-1 text-xs font-semibold tracking-[0.2em] uppercase" style={{ color: "var(--t3)" }}>
-            Galaxy AI Workspace
+             AI Workspace
           </p>
           <p className="mt-3 text-sm" style={{ color: "var(--t2)" }}>
             {isSignUp ? "Create your account to begin" : "Welcome back, sign in to continue"}
