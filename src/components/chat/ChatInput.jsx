@@ -3,18 +3,23 @@
 import { useState, useRef, useEffect } from "react";
 import useVoice from "@/hooks/useVoice";
 import { useSpeech } from "@/hooks/useSpeech";
+import { chatHistoryKey } from "@/lib/omnixChatStorage";
 
-export default function ChatInput({ onSend, loading }) {
+export default function ChatInput({ onSend, loading, userId }) {
   const [text, setText] = useState("");
   const [focused, setFocused] = useState(false);
   const textareaRef = useRef(null);
 
   const saveHistory = (msg) => {
+    if (!userId || typeof window === "undefined") return;
     try {
-      let h = JSON.parse(localStorage.getItem("omnix_chat_history") || "[]");
+      const key = chatHistoryKey(userId);
+      let h = JSON.parse(window.localStorage.getItem(key) || "[]");
       h.unshift({ id: Date.now(), title: msg });
-      localStorage.setItem("omnix_chat_history", JSON.stringify(h.slice(0, 50)));
-    } catch {}
+      window.localStorage.setItem(key, JSON.stringify(h.slice(0, 50)));
+    } catch {
+      /* ignore */
+    }
   };
 
   const { listening, startListening, stopListening } = useVoice((t) => {

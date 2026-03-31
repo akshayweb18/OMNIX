@@ -1,15 +1,26 @@
 // "use client";
 "use client";
 import { useState, useEffect } from "react";
+import { useAuth } from "@/context/AuthContext";
+import { chatHistoryKey } from "@/lib/omnixChatStorage";
 
 export default function ChatHistory() {
+	const { user } = useAuth();
 	const [chats, setChats] = useState([]);
 	const [activeId, setActiveId] = useState(null);
 
 	useEffect(() => {
-		const history = JSON.parse(localStorage.getItem("omnix_chat_history") || "[]");
-		setChats(history);
-	}, []);
+		if (!user?.uid) {
+			setChats([]);
+			return;
+		}
+		try {
+			const history = JSON.parse(localStorage.getItem(chatHistoryKey(user.uid)) || "[]");
+			setChats(history);
+		} catch {
+			setChats([]);
+		}
+	}, [user?.uid]);
 
 	return (
 		<aside className="w-72 h-screen bg-white dark:bg-neutral-950 border-r border-gray-200 dark:border-neutral-800 flex flex-col transition-colors duration-500">

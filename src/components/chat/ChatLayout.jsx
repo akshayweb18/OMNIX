@@ -9,12 +9,12 @@ import GalaxyLogo from "@/components/ui/GalaxyLogo";
 import { useChat } from "@/hooks/useChat";
 import { useSpeech } from "@/hooks/useSpeech";
 import { useAuth } from "@/context/AuthContext";
-
-const SK = "omnix_sessions", AK = "omnix_active";
-const readS  = () => { try { return JSON.parse(localStorage.getItem(SK) || "[]"); } catch { return []; } };
-const writeS = (s) => { try { localStorage.setItem(SK, JSON.stringify(s)); } catch {} };
-const readA  = () => { try { return localStorage.getItem(AK) || null; } catch { return null; } };
-const writeA = (id) => { try { localStorage.setItem(AK, String(id)); } catch {} };
+import {
+  readSessions,
+  writeSessions,
+  readActiveChatId,
+  writeActiveChatId,
+} from "@/lib/omnixChatStorage";
 
 function timeAgo(ts) {
   const d = Date.now() - Number(ts);
@@ -307,19 +307,35 @@ export default function ChatLayout() {
   const isFirstMsg = useRef(true);
 
   useEffect(() => {
-    const saved = readS(); setSessions(saved);
-    const lid = readA();
+    if (!user?.uid) return;
+    const uid = user.uid;
+    const saved = readSessions(uid);
+    setSessions(saved);
+    const lid = readActiveChatId(uid);
+    resetChat();
     if (lid) {
       const s = saved.find(x => x.id === lid);
-      if (s) { setActiveChatId(lid); loadChat(s.messages); isFirstMsg.current = false; }
+      if (s) {
+        setActiveChatId(lid);
+        loadChat(s.messages);
+        isFirstMsg.current = false;
+        return;
+      }
+      writeActiveChatId(uid, "");
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setActiveChatId(null);
+    isFirstMsg.current = true;
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- scope load to Firebase uid only
+  }, [user?.uid]);
 
   useEffect(() => {
-    if (!activeChatId || messages.length === 0) return;
-    setSessions(prev => { const u = prev.map(s => s.id === activeChatId ? { ...s, messages } : s); writeS(u); return u; });
-  }, [messages, activeChatId]);
+    if (!user?.uid || !activeChatId || messages.length === 0) return;
+    setSessions(prev => {
+      const u = prev.map(s => (s.id === activeChatId ? { ...s, messages } : s));
+      writeSessions(user.uid, u);
+      return u;
+    });
+  }, [messages, activeChatId, user?.uid]);
 
   useEffect(() => {
     if (!messages.length) return;
@@ -430,30 +446,50 @@ export default function ChatLayout() {
   }, []);
 
   const handleSend = useCallback(async (text) => {
-    if (!text.trim()) return;
+    if (!text.trim() || !user?.uid) return;
+    const uid = user.uid;
     if (isFirstMsg.current) {
       const id = String(Date.now()), title = text.slice(0, 50) + (text.length > 50 ? "…" : "");
-      setSessions(prev => { const u = [{ id, title, messages: [] }, ...prev]; writeS(u); return u; });
-      setActiveChatId(id); writeA(id); isFirstMsg.current = false;
+      setSessions(prev => {
+        const u = [{ id, title, messages: [] }, ...prev];
+        writeSessions(uid, u);
+        return u;
+      });
+      setActiveChatId(id);
+      writeActiveChatId(uid, id);
+      isFirstMsg.current = false;
     }
     sendMessage(text);
-  }, [sendMessage]);
+  }, [sendMessage, user?.uid]);
 
   const handleNewChat = useCallback(() => {
-    resetChat(); setActiveChatId(null); writeA(""); isFirstMsg.current = true;
-  }, [resetChat]);
+    resetChat();
+    setActiveChatId(null);
+    if (user?.uid) writeActiveChatId(user.uid, "");
+    isFirstMsg.current = true;
+  }, [resetChat, user?.uid]);
 
   const handleSelectChat = useCallback((id) => {
     const s = sessions.find(x => x.id === id);
-    if (!s) return;
-    resetChat(); loadChat(s.messages); setActiveChatId(id); writeA(id); isFirstMsg.current = false;
+    if (!s || !user?.uid) return;
+    resetChat();
+    loadChat(s.messages);
+    setActiveChatId(id);
+    writeActiveChatId(user.uid, id);
+    isFirstMsg.current = false;
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sessions, resetChat, loadChat]);
+  }, [sessions, resetChat, loadChat, user?.uid]);
 
   const handleDeleteChat = useCallback((id) => {
-    setSessions(prev => { const u = prev.filter(s => s.id !== id); writeS(u); return u; });
+    if (!user?.uid) return;
+    const uid = user.uid;
+    setSessions(prev => {
+      const u = prev.filter(s => s.id !== id);
+      writeSessions(uid, u);
+      return u;
+    });
     if (activeChatId === id) handleNewChat();
-  }, [activeChatId, handleNewChat]);
+  }, [activeChatId, handleNewChat, user?.uid]);
 
   const sp = { activeChatId, sessions, onSelect: handleSelectChat, onNew: handleNewChat, onDelete: handleDeleteChat, user, onSignOut: signOut };
 
@@ -523,7 +559,7 @@ export default function ChatLayout() {
         {/* Input bar — compact floating style */}
         <div className="omnix-input-footer">
           <div style={{ margin: "0 auto", width: "100%", maxWidth: 720 }}>
-            <ChatInput onSend={handleSend} loading={loading} />
+            <ChatInput onSend={handleSend} loading={loading} userId={user?.uid} />
             <p style={{ marginTop: 6, textAlign: "center", fontSize: 9, color: "var(--t3)", letterSpacing: "0.06em", opacity: 0.7 }}>
               OMNIX may produce inaccurate results · Verify important info
             </p>

@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { auth, googleProvider, db } from "@/lib/firebase";
+import { clearLegacySharedChatStorage } from "@/lib/omnixChatStorage";
 
 const AuthContext = createContext(null);
 
@@ -56,7 +57,10 @@ export function AuthProvider({ children }) {
     return result;
   };
 
-  const signOut = () => firebaseSignOut(auth);
+  const signOut = async () => {
+    clearLegacySharedChatStorage();
+    await firebaseSignOut(auth);
+  };
 
   return (
     <AuthContext.Provider
