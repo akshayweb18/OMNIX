@@ -2,11 +2,11 @@
   "[project]/src/components/chat/ChatLayout.jsx [app-client] (ecmascript, next/dynamic entry)": {
     "id": "[project]/src/components/chat/ChatLayout.jsx [app-client] (ecmascript, next/dynamic entry)",
     "files": [
-      "static/chunks/src_1ace0856._.js",
+      "static/chunks/src_a7e865fa._.js",
       "static/chunks/f545a_micromark_dev_lib_2a08bc19._.js",
       "static/chunks/b5ecd_micromark-core-commonmark_dev_lib_bc76a96f._.js",
       "static/chunks/node_modules__pnpm_20dc8a1b._.js",
-      "static/chunks/src_components_chat_ChatLayout_jsx_4a1d970a._.js"
+      "static/chunks/src_components_chat_ChatLayout_jsx_3c55c383._.js"
     ]
   }
 }

@@ -4,7 +4,7 @@ export default function manifest() {
     name: "OMNIX — Galaxy AI Assistant",
     short_name: "OMNIX",
     description:
-      "OMNIX is a world-class AI assistant powered by Gemini. Ask anything, build anything.",
+      "OMNIX is a world-class AI assistant. Ask anything, build anything.",
     start_url: "/",
     scope: "/",
     display: "standalone",

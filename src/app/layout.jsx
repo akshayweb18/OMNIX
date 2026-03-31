@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "OMNIX — Galaxy AI Assistant",
-  description: "OMNIX is a world-class AI assistant powered by Gemini. Ask anything, build anything.",
+  description: "OMNIX is a world-class AI assistant. Ask anything, build anything.",
   applicationName: "OMNIX",
   icons: {
     icon: [

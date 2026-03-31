@@ -122,7 +122,7 @@ function SidebarContent({ activeChatId, sessions, onSelect, onNew, onDelete, onC
           </div>
           <div style={{ minWidth: 0 }}>
             <span className="brand-gradient" style={{ fontSize: 18, fontWeight: 900, letterSpacing: "0.12em", display: "block", lineHeight: 1.2 }}>OMNIX</span>
-            <div className="model-badge" style={{ marginTop: 2 }}><IconBolt /> Omnix 3 Flash</div>
+            <div className="model-badge" style={{ marginTop: 2 }}><IconBolt /> Omnix 3 Flash Preview</div>
           </div>
         </div>
 
@@ -293,11 +293,12 @@ function WelcomeScreen({ onSend, user, onPinToTop }) {
    MAIN LAYOUT — rebuilt from scratch, mobile-first
    ═══════════════════════════════════════════════════════════════ */
 export default function ChatLayout() {
-  const { messages, sendMessage, loading, resetChat, loadChat } = useChat();
+  const { messages, sendMessage, loading, resetChat, loadChat, stopGeneration, regenerateLastAssistant } = useChat();
   const { speak } = useSpeech();
   const { user, signOut } = useAuth();
   const bottomRef = useRef(null);
   const scrollRef = useRef(null);
+  const stickToBottomRef = useRef(true);
   const welcomeShellRef = useRef(null);
   const welcomeOpenedAt = useRef(0);
 
@@ -338,11 +339,11 @@ export default function ChatLayout() {
   }, [messages, activeChatId, user?.uid]);
 
   useEffect(() => {
-    if (!messages.length) return;
+    if (!messages.length || loading) return;
     const last = messages[messages.length - 1];
-    if (last.role === "assistant") speak(last.content);
+    if (last.role === "assistant" && last.content?.trim()) speak(last.content);
     return () => { if (typeof window !== "undefined") window.speechSynthesis.cancel(); };
-  }, [messages, speak]);
+  }, [messages, loading, speak]);
 
   useEffect(() => {
     if (typeof window === "undefined" || !("scrollRestoration" in window.history)) return;
@@ -430,13 +431,40 @@ export default function ChatLayout() {
   }, [messages.length, scrollThreadToTop]);
 
   useEffect(() => {
-    if (!messages.length) return;
+    if (loading) stickToBottomRef.current = true;
+  }, [loading]);
+
+  useEffect(() => {
     const el = scrollRef.current;
-    if (!el) {
-      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-      return;
-    }
-    if (el.scrollHeight - el.clientHeight - el.scrollTop < 220) el.scrollTo({ top: el.scrollHeight, behavior: "smooth" });
+    if (!el) return;
+    const onScroll = () => {
+      const dist = el.scrollHeight - el.clientHeight - el.scrollTop;
+      stickToBottomRef.current = dist < 140;
+    };
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, [messages.length]);
+
+  useEffect(() => {
+    if (!messages.length && !loading) return;
+    const el = scrollRef.current;
+    const bottom = bottomRef.current;
+    if (!stickToBottomRef.current && !loading) return;
+
+    const run = () => {
+      if (bottom) {
+        bottom.scrollIntoView({
+          behavior: loading ? "auto" : "smooth",
+          block: "end",
+        });
+        return;
+      }
+      if (el) el.scrollTo({ top: el.scrollHeight, behavior: loading ? "auto" : "smooth" });
+    };
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(run);
+    });
   }, [messages, loading]);
 
   useEffect(() => {
@@ -547,9 +575,16 @@ export default function ChatLayout() {
             ) : (
               <div style={{ margin: "0 auto", width: "100%", maxWidth: 720, padding: "24px 16px" }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 20, paddingBottom: 16 }}>
-                  <ChatList messages={messages} user={user} />
-                  {loading && <TypingIndicator />}
-                  <div ref={bottomRef} />
+                  <ChatList
+                    messages={messages}
+                    user={user}
+                    loading={loading}
+                    onRegenerateLast={regenerateLastAssistant}
+                  />
+                  {loading &&
+                    (messages.length === 0 ||
+                      messages[messages.length - 1]?.role === "user") && <TypingIndicator />}
+                  <div ref={bottomRef} className="omnix-scroll-anchor" aria-hidden />
                 </div>
               </div>
             )}
@@ -559,7 +594,12 @@ export default function ChatLayout() {
         {/* Input bar — compact floating style */}
         <div className="omnix-input-footer">
           <div style={{ margin: "0 auto", width: "100%", maxWidth: 720 }}>
-            <ChatInput onSend={handleSend} loading={loading} userId={user?.uid} />
+            <ChatInput
+              onSend={handleSend}
+              loading={loading}
+              userId={user?.uid}
+              onStopGenerating={stopGeneration}
+            />
             <p style={{ marginTop: 6, textAlign: "center", fontSize: 9, color: "var(--t3)", letterSpacing: "0.06em", opacity: 0.7 }}>
               OMNIX may produce inaccurate results · Verify important info
             </p>

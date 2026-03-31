@@ -23,7 +23,7 @@ export default function ChatHeader({ onMenuToggle, onNewChat }) {
   }, [menuOpen]);
 
   const handleNew = () => { resetChat(); onNewChat?.(); };
-  const copy = async () => { try { await navigator.clipboard.writeText("gemini-3-flash-preview"); } catch {} };
+  const copy = async () => { try { await navigator.clipboard.writeText("Omnix 3 Flash Preview"); } catch {} };
 
   return (
     <>
@@ -58,7 +58,7 @@ export default function ChatHeader({ onMenuToggle, onNewChat }) {
           {/* Model pill — desktop only */}
           <button onClick={() => setIsOpen(true)} className="omnix-desktop-only header-model-pill" style={{ alignItems: "center", gap: 8, borderRadius: 999, padding: "6px 12px", fontSize: 12, fontWeight: 500 }}>
             <span className="animate-pulse-ring" style={{ width: 6, height: 6, borderRadius: "50%", background: "linear-gradient(135deg,#06b6d4,#6366f1)", boxShadow: "0 0 6px rgba(6,182,212,0.7)" }} />
-            Gemini 3 Flash Preview
+            Omnix 3 Flash Preview
             <svg style={{width:12,height:12,opacity:0.5}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
             </svg>
@@ -148,15 +148,14 @@ export default function ChatHeader({ onMenuToggle, onNewChat }) {
       <Modal open={isOpen} onClose={() => setIsOpen(false)} title="Model Information">
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <p style={{ fontSize: 13, color: "var(--t2)", lineHeight: 1.75 }}>
-            OMNIX is powered by Google&apos;s{" "}
-            <strong style={{ color: "#c4b5fd" }}>Gemini 3 Flash Preview</strong> — a fast,
-            high-quality multimodal model for intelligent conversations.
+            <strong style={{ color: "#c4b5fd" }}>Omnix 3 Flash Preview</strong> is OMNIX&apos;s default reasoning model — fast,
+            accurate answers with strong context and coding support.
           </p>
           <div style={{ borderRadius: 12, padding: 16, background: "rgba(99,102,241,0.07)", border: "1px solid rgba(99,102,241,0.16)" }}>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16 }}>
               <div>
-                <p style={{ fontSize: 10, color: "var(--t3)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 4 }}>Active Model</p>
-                <p style={{ fontFamily: "var(--font-geist-mono,monospace)", fontSize: 13, color: "#a5b4fc" }}>gemini-3-flash-preview</p>
+                <p style={{ fontSize: 10, color: "var(--t3)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 4 }}>Active model</p>
+                <p style={{ fontSize: 14, fontWeight: 600, color: "#a5b4fc" }}>Omnix 3 Flash Preview</p>
               </div>
               <button onClick={copy} className="header-btn header-btn-ghost" style={{ padding: "6px 12px", fontSize: 12, fontWeight: 600, flexShrink: 0 }}>
                 Copy

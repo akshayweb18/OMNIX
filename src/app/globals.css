@@ -361,6 +361,91 @@ input, textarea, select { font-size: 16px; }
 .dot-2 { animation: bounce-dot 1.4s ease-in-out infinite 160ms; }
 .dot-3 { animation: bounce-dot 1.4s ease-in-out infinite 320ms; }
 
+/* ─── Chat: thinking + streaming (ChatGPT-style motion) ─────── */
+.thinking-avatar-glow {
+  animation: thinking-pulse 2s ease-in-out infinite;
+}
+@keyframes thinking-pulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(99,102,241,0.35); }
+  50% { box-shadow: 0 4px 22px rgba(129,140,248,0.55); }
+}
+.thinking-bubble {
+  border: 1px solid rgba(129,140,248,0.14);
+}
+.thinking-shimmer {
+  color: #e2e8f0;
+  text-shadow: 0 0 24px rgba(167,139,250,0.35);
+  animation: thinking-text-breathe 1.8s ease-in-out infinite;
+}
+@keyframes thinking-text-breathe {
+  0%, 100% { opacity: 0.82; }
+  50% { opacity: 1; }
+}
+.thinking-bar {
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(99,102,241,0.12);
+  overflow: hidden;
+}
+.thinking-bar-inner {
+  height: 100%;
+  width: 35%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #6366f1, #a855f7, #22d3ee);
+  animation: thinking-bar-slide 1.3s ease-in-out infinite;
+}
+@keyframes thinking-bar-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(320%); }
+}
+.thinking-dot-1 { animation: bounce-dot 1.4s ease-in-out infinite 0ms; }
+.thinking-dot-2 { animation: bounce-dot 1.4s ease-in-out infinite 180ms; }
+.thinking-dot-3 { animation: bounce-dot 1.4s ease-in-out infinite 360ms; }
+
+.streaming-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 3px;
+  vertical-align: -0.2em;
+  border-radius: 1px;
+  background: linear-gradient(180deg, #c4b5fd, #a78bfa);
+  animation: stream-cursor-blink 0.95s steps(1, end) infinite;
+}
+@keyframes stream-cursor-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.prose-omnix-streaming .code-block,
+.bubble-ai-streaming .code-block {
+  animation: code-fade-in 0.35s ease both;
+}
+@keyframes code-fade-in {
+  from { opacity: 0.85; }
+  to { opacity: 1; }
+}
+
+.bubble-user-send {
+  animation: user-bubble-in 320ms cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes user-bubble-in {
+  from {
+    opacity: 0.88;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.omnix-scroll-anchor {
+  width: 100%;
+  height: 1px;
+  flex-shrink: 0;
+  scroll-margin-bottom: 12px;
+}
+
 
 /* ═══════════════════════════════════════════════════════════════
    BRAND
@@ -735,10 +820,23 @@ input, textarea, select { font-size: 16px; }
   color: var(--t3);
   transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
 }
-.action-btn:hover {
+.action-btn:hover:not(:disabled) {
   color: #c4b5fd;
   background: rgba(99,102,241,0.1);
   border-color: rgba(99,102,241,0.18);
+}
+
+.chat-message-actions {
+  opacity: 1;
+}
+@media (hover: hover) and (pointer: fine) {
+  .group .chat-message-actions {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+  .group:hover .chat-message-actions {
+    opacity: 1;
+  }
 }
 
 

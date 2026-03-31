@@ -52,7 +52,7 @@ export default function ChatHistory() {
 
 			{/* Footer */}
 			<div className="p-4 border-t border-gray-200 dark:border-neutral-800 text-xs text-gray-500 dark:text-gray-400">
-				OMNIX AI • Gemini Clone
+				OMNIX AI
 			</div>
 		</aside>
 	);

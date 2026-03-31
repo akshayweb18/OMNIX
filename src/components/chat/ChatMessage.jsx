@@ -55,10 +55,22 @@ function CodeBlock({ children, className }) {
   );
 }
 
-function ActionBtn({ icon, label, onClick, active, activeColor = "#22d3ee" }) {
+function ActionBtn({ icon, label, onClick, active, activeColor = "#22d3ee", disabled }) {
   return (
-    <button onClick={onClick} title={label} className="action-btn"
-      style={active ? { color: activeColor, background: `${activeColor}18`, borderColor: `${activeColor}30` } : undefined}>
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      title={label}
+      className="action-btn"
+      style={
+        disabled
+          ? { opacity: 0.35, cursor: "not-allowed" }
+          : active
+            ? { color: activeColor, background: `${activeColor}18`, borderColor: `${activeColor}30` }
+            : undefined
+      }
+    >
       {icon}
     </button>
   );
@@ -68,10 +80,17 @@ const ThumbUp   = () => <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24
 const ThumbDown = () => <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018c.163 0 .326.02.485.06L17 4m-7 10v2a2 2 0 002 2h.095c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"/></svg>;
 const Regen     = () => <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>;
 
-export default function ChatMessage({ message, user }) {
+export default function ChatMessage({ message, user, isLastInThread, loading, isStreaming, onRegenerate }) {
   const isUser = message.role === "user";
   const [liked, setLiked] = useState(false);
   const [disliked, setDisliked] = useState(false);
+
+  const canRegenerate =
+    !isUser &&
+    isLastInThread &&
+    typeof onRegenerate === "function" &&
+    !loading &&
+    !!(message.content && String(message.content).trim());
 
   const userInitial = (user?.displayName || user?.email || "U").charAt(0).toUpperCase();
   const userName = user?.displayName?.split(" ")[0] || "You";
@@ -118,7 +137,7 @@ export default function ChatMessage({ message, user }) {
 
           {/* Bubble */}
           {isUser ? (
-            <div className="bubble-user rounded-2xl rounded-tr-md px-4 py-3 text-[14px] leading-relaxed text-white/95">
+            <div className="bubble-user bubble-user-send rounded-2xl rounded-tr-md px-4 py-3 text-[14px] leading-relaxed text-white/95">
               <p style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}>{message.content}</p>
             </div>
           ) : (
@@ -156,11 +175,18 @@ export default function ChatMessage({ message, user }) {
 
           {/* Actions — AI messages */}
           {!isUser && (
-            <div className="mt-2 flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div className="mt-2 flex flex-wrap items-center gap-1 chat-message-actions">
               <CopyBtn text={message.content} label="Copy" />
               <ActionBtn icon={<ThumbUp />} label="Helpful" onClick={() => { setLiked(v => !v); setDisliked(false); }} active={liked} activeColor="#22d3ee" />
               <ActionBtn icon={<ThumbDown />} label="Not helpful" onClick={() => { setDisliked(v => !v); setLiked(false); }} active={disliked} activeColor="#f87171" />
-              <ActionBtn icon={<Regen />} label="Regenerate" onClick={() => {}} />
+              <ActionBtn
+                icon={<Regen />}
+                label="Regenerate"
+                onClick={() => onRegenerate?.()}
+                active={false}
+                activeColor="#a78bfa"
+                disabled={!canRegenerate}
+              />
             </div>
           )}
 

@@ -5,7 +5,7 @@ import useVoice from "@/hooks/useVoice";
 import { useSpeech } from "@/hooks/useSpeech";
 import { chatHistoryKey } from "@/lib/omnixChatStorage";
 
-export default function ChatInput({ onSend, loading, userId }) {
+export default function ChatInput({ onSend, loading, userId, onStopGenerating }) {
   const [text, setText] = useState("");
   const [focused, setFocused] = useState(false);
   const textareaRef = useRef(null);
@@ -45,6 +45,7 @@ export default function ChatInput({ onSend, loading, userId }) {
   const handleStop = () => {
     stop();
     if (typeof window !== "undefined") window.speechSynthesis.cancel();
+    if (loading) onStopGenerating?.();
   };
 
   const handleKeyDown = (e) => {
@@ -84,7 +85,7 @@ export default function ChatInput({ onSend, loading, userId }) {
             onKeyDown={handleKeyDown}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            placeholder={loading ? "OMNIX is thinking..." : listening ? "Listening..." : "Message OMNIX..."}
+            placeholder={loading ? "AI is thinking…" : listening ? "Listening..." : "Message OMNIX..."}
             rows={1}
             disabled={loading}
             style={{
@@ -156,7 +157,7 @@ export default function ChatInput({ onSend, loading, userId }) {
             {loading ? (
               <>
                 <span className="animate-pulse" style={{ width: 5, height: 5, borderRadius: "50%", background: "#c4b5fd", flexShrink: 0 }} />
-                <span>Generating response...</span>
+                <span>AI is thinking…</span>
               </>
             ) : listening ? (
               <>
