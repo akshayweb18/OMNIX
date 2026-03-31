@@ -70,6 +70,28 @@ input, textarea, select { font-size: 16px; }
   box-sizing: border-box;
 }
 
+/*
+ * Loading screen: fixed to the *visual viewport* so flex center always works on phones
+ * (parent min-height / 100dvh chains and PWA WebViews often fail in-flow centering).
+ */
+.omnix-loading-fullscreen {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: max(12px, env(safe-area-inset-top)) 16px max(12px, env(safe-area-inset-bottom)) 16px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
 /* Fills flex page shell — avoids nested 100dvh + document scroll pushing the hero off-screen on phones */
 .omnix-chat-root {
   display: flex;
@@ -111,10 +133,23 @@ input, textarea, select { font-size: 16px; }
   gap: 10px;
   grid-template-columns: minmax(0, 1fr);
 }
+@media (max-width: 639px) {
+  .welcome-prompt-grid {
+    gap: 8px;
+  }
+  .welcome-prompt-grid.welcome-prompt-grid--tight-top {
+    margin-top: 16px !important;
+  }
+}
 @media (min-width: 520px) {
   .welcome-prompt-grid {
     gap: 12px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 520px) and (max-width: 639px) {
+  .welcome-prompt-grid {
+    gap: 8px;
   }
 }
 
@@ -750,6 +785,7 @@ input, textarea, select { font-size: 16px; }
 .prompt-card-creative {
   position: relative;
   border-radius: 16px;
+  padding: 16px;
   background: linear-gradient(155deg, rgba(13,19,47,0.86), rgba(14,18,40,0.72));
   border: 1px solid rgba(129, 140, 248, 0.18);
   overflow: hidden;
@@ -758,6 +794,44 @@ input, textarea, select { font-size: 16px; }
   transition: transform 0.4s cubic-bezier(.22,1,.36,1),
               box-shadow 0.4s ease,
               border-color 0.4s ease;
+}
+@media (max-width: 639px) {
+  .prompt-card-creative {
+    padding: 10px 12px;
+    border-radius: 12px;
+  }
+  .prompt-card-creative > div:first-of-type {
+    gap: 8px !important;
+    margin-bottom: 4px !important;
+  }
+  .prompt-card-creative > div:first-of-type > span {
+    font-size: 13px !important;
+    line-height: 1.25 !important;
+  }
+  .prompt-card-creative > p {
+    font-size: 10.5px !important;
+    line-height: 1.4 !important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    margin: 0;
+  }
+  .prompt-card-creative:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: rgba(129, 140, 248, 0.22);
+  }
+  .prompt-card-creative:active {
+    transform: scale(0.98);
+    border-color: rgba(167, 139, 250, 0.35);
+  }
+  .prompt-icon-wrap {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 10px;
+    font-size: 15px !important;
+  }
 }
 .prompt-card-creative::before {
   content: '';

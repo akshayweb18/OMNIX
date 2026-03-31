@@ -265,11 +265,12 @@ function WelcomeScreen({ onSend, user, onPinToTop }) {
       </p>
 
       {/* Prompt cards */}
-      <div className="welcome-prompt-grid" style={{ marginTop: 24 }}>
+      <div className="welcome-prompt-grid welcome-prompt-grid--tight-top" style={{ marginTop: 24 }}>
         {PROMPTS.map((p, i) => (
           <button key={p.label} onClick={() => onSend(p.text)}
             className="prompt-card-creative"
-            style={{ padding: 16, textAlign: "left", cursor: "pointer", animation: `slide-up 0.6s cubic-bezier(.22,1,.36,1) ${0.3 + i * 0.08}s both` }}>
+            type="button"
+            style={{ textAlign: "left", cursor: "pointer", animation: `slide-up 0.6s cubic-bezier(.22,1,.36,1) ${0.3 + i * 0.08}s both` }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
               <div className="prompt-icon-wrap" style={{ background: p.bg, border: `1px solid ${p.accent}33`, "--icon-shadow": `${p.accent}66` }}>
                 {p.icon}

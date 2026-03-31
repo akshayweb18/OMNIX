@@ -88,9 +88,10 @@ export default function Page() {
       className="omnix-app-shell"
       style={{
         width: "100%",
-        display: showChat ? "flex" : "block",
-        flexDirection: showChat ? "column" : undefined,
-        minHeight: 0,
+        height: "100dvh",
+        minHeight: "100dvh",
+        display: "flex",
+        flexDirection: "column",
         overflow: "hidden",
         background: "#050816",
       }}
@@ -100,19 +101,7 @@ export default function Page() {
           <ChatLayout />
         </ChatProvider>
       ) : (
-        <div
-          style={{
-            minHeight: "100%",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            paddingTop: "max(20px, env(safe-area-inset-top))",
-            paddingLeft: 16,
-            paddingRight: 16,
-            boxSizing: "border-box",
-          }}
-        >
+        <div className="omnix-loading-fullscreen">
           <div style={{ textAlign: "center", width: "100%" }}>
             <div style={{ width: 48, height: 48, margin: "0 auto 16px", borderRadius: 12, background: "rgba(99,102,241,0.15)", border: "1px solid rgba(99,102,241,0.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
               <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
