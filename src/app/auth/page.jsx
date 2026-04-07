@@ -126,66 +126,56 @@ export default function AuthPage() {
   const inputStyle = { background: "rgba(11,16,40,0.7)", border: "1px solid rgba(129,140,248,0.15)", color: "var(--t1)" };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-x-hidden overflow-y-auto" style={{ background: "var(--bg)" }}>
+    <div className="relative min-h-screen flex items-center justify-center overflow-x-hidden overflow-y-auto auth-mesh-bg">
       <Starfield />
       <ShootingStars />
-
-      {/* Nebula blobs */}
-      <div className="pointer-events-none absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(79,70,229,0.3), transparent 65%)", animation: "nebula-drift-1 18s ease-in-out infinite" }} />
-      <div className="pointer-events-none absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(192,38,211,0.25), transparent 65%)", animation: "nebula-drift-2 22s ease-in-out infinite" }} />
-      <div className="pointer-events-none absolute top-1/4 right-1/4 h-72 w-72 rounded-full blur-3xl"
-        style={{ background: "radial-gradient(circle, rgba(6,182,212,0.18), transparent 65%)", animation: "nebula-drift-3 15s ease-in-out infinite" }} />
 
       <div className="relative z-10 w-full max-w-md px-4 sm:px-5">
 
         {/* Logo with orbital rings */}
-        <div className="flex flex-col items-center mb-6 sm:mb-8" style={{ animation: "greeting-enter 0.8s cubic-bezier(.22,1,.36,1) both" }}>
+        <div className="flex flex-col items-center mb-6 sm:mb-8 animate-greeting">
           <div className="relative mb-4 sm:mb-5">
             {/* Outer orbit */}
-            <div className="absolute -inset-4 sm:-inset-5 rounded-full animate-orbit pointer-events-none" style={{ border: "1px dashed rgba(129,140,248,0.15)" }}>
-              <div className="absolute -top-1 left-1/2 h-2 w-2 rounded-full" style={{ background: "#818cf8", boxShadow: "0 0 8px #818cf8" }} />
+            <div className="absolute -inset-4 sm:-inset-5 rounded-full animate-orbit pointer-events-none" style={{ border: "1px dashed rgba(129,140,248,0.2)" }}>
+              <div className="absolute -top-1 left-1/2 h-2 w-2 rounded-full" style={{ background: "#818cf8", boxShadow: "0 0 10px #818cf8" }} />
             </div>
             {/* Inner orbit */}
-            <div className="absolute -inset-2 sm:-inset-3 rounded-full animate-orbit-rev pointer-events-none" style={{ border: "1px dashed rgba(192,132,252,0.12)" }}>
-              <div className="absolute -bottom-0.5 right-0 h-1.5 w-1.5 rounded-full" style={{ background: "#c084fc", boxShadow: "0 0 6px #c084fc" }} />
+            <div className="absolute -inset-2 sm:-inset-3 rounded-full animate-orbit-rev pointer-events-none" style={{ border: "1px dashed rgba(192,132,252,0.15)" }}>
+              <div className="absolute -bottom-0.5 right-0 h-1.5 w-1.5 rounded-full" style={{ background: "#c084fc", boxShadow: "0 0 8px #c084fc" }} />
             </div>
             {/* Logo */}
             <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-2xl flex items-center justify-center animate-float"
               style={{
-                background: "linear-gradient(145deg, rgba(12,16,44,0.98), rgba(21,26,62,0.95))",
+                background: "linear-gradient(145deg, rgba(12,16,44,0.95), rgba(20,26,58,0.9))",
                 border: "1px solid rgba(129,140,248,0.3)",
-                boxShadow: "0 24px 60px -18px rgba(67,56,202,0.8), inset 0 1px 0 rgba(255,255,255,0.12), 0 0 40px -10px rgba(99,102,241,0.3)",
+                boxShadow: "0 20px 50px -15px rgba(67,56,202,0.6), inset 0 1px 0 rgba(255,255,255,0.08)",
               }}>
               <GalaxyLogo size={36} animate={false} />
             </div>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl font-black tracking-widest brand-gradient">OMNIX</h1>
-          <p className="mt-1 text-xs font-semibold tracking-[0.2em] uppercase" style={{ color: "var(--t3)" }}>
-            AI Workspace
+          <h1 className="text-3xl sm:text-4xl font-black tracking-widest brand-gradient drop-shadow-[0_0_15px_rgba(165,180,252,0.3)]">OMNIX</h1>
+          <p className="mt-1 text-[10px] font-bold tracking-[0.3em] uppercase opacity-60" style={{ color: "var(--t3)" }}>
+            Intelligence Workspace
           </p>
-          <p className="mt-3 text-sm" style={{ color: "var(--t2)" }}>
+          <p className="mt-3 text-sm font-medium" style={{ color: "var(--t2)" }}>
             {isSignUp ? "Create your account to begin" : "Welcome back, sign in to continue"}
           </p>
         </div>
 
         {/* Card with glowing border */}
         <div className="auth-glow-card animate-card-enter">
-          <div className="rounded-[20px] p-5 sm:p-7"
+          <div className="rounded-[22px] p-5 sm:p-7"
             style={{
-              background: "linear-gradient(155deg, rgba(13,19,47,0.92), rgba(10,14,38,0.88))",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
+              background: "linear-gradient(165deg, rgba(13,19,47,0.9), rgba(8,12,32,0.85))",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
             }}>
 
             {/* Google button */}
             <button onClick={handleGoogle} disabled={submitting}
-              className="group flex w-full items-center justify-center gap-3 rounded-xl py-3 font-semibold text-sm transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(129,140,248,0.18)", color: "var(--t1)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.1)"; e.currentTarget.style.borderColor = "rgba(167,139,250,0.45)"; e.currentTarget.style.boxShadow = "0 8px 30px -8px rgba(99,102,241,0.3)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = "rgba(255,255,255,0.05)"; e.currentTarget.style.borderColor = "rgba(129,140,248,0.18)"; e.currentTarget.style.boxShadow = "none"; }}
+              className="auth-btn-hover flex w-full items-center justify-center gap-3 rounded-xl py-3 font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+              style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(129,140,248,0.15)", color: "var(--t1)" }}
             >
               <GoogleIcon />
               Continue with Google
@@ -193,61 +183,53 @@ export default function AuthPage() {
 
             {/* Divider */}
             <div className="flex items-center gap-4 my-6">
-              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(129,140,248,0.25), transparent)" }} />
-              <span className="text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: "var(--t3)" }}>or use email</span>
-              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(129,140,248,0.25), transparent)" }} />
+              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(129,140,248,0.2), transparent)" }} />
+              <span className="text-[10px] font-bold tracking-[0.2em] uppercase opacity-40" style={{ color: "var(--t3)" }}>or use email</span>
+              <div className="flex-1 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(129,140,248,0.2), transparent)" }} />
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {isSignUp && (
-                <div style={{ animation: "stagger-fade-up 0.4s ease both" }}>
-                  <label htmlFor="auth-name" className="mb-1.5 block text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: "var(--t3)" }}>
+                <div style={{ animation: "stagger-fade-up 0.3s ease both" }}>
+                  <label htmlFor="auth-name" className="mb-1.5 block text-[10px] font-bold tracking-[0.2em] uppercase opacity-50" style={{ color: "var(--t3)" }}>
                     Full Name
                   </label>
-                  <div className="relative">
-                    <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4" style={{ color: "var(--t3)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                  <div className="relative auth-input-focus group">
+                    <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 transition-colors group-focus-within:text-indigo-400" style={{ color: "var(--t3)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0" />
                     </svg>
                     <input id="auth-name" type="text" value={name} onChange={(e) => setName(e.target.value)}
-                      placeholder="Akshay Sharma" disabled={submitting} className={inputCls} style={{ ...inputStyle, paddingLeft: 40 }}
-                      onFocus={(e) => { e.target.style.borderColor = "rgba(139,92,246,0.5)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.12), 0 8px 24px -8px rgba(99,102,241,0.15)"; }}
-                      onBlur={(e) => { e.target.style.borderColor = "rgba(129,140,248,0.15)"; e.target.style.boxShadow = "none"; }} />
+                      placeholder="Akshay Sharma" disabled={submitting} className={inputCls} style={{ ...inputStyle, paddingLeft: 40 }} />
                   </div>
                 </div>
               )}
 
-              <div style={{ animation: "stagger-fade-up 0.4s ease 0.05s both" }}>
-                <label htmlFor="auth-email" className="mb-1.5 block text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: "var(--t3)" }}>
+              <div style={{ animation: "stagger-fade-up 0.3s ease 0.05s both" }}>
+                <label htmlFor="auth-email" className="mb-1.5 block text-[10px] font-bold tracking-[0.2em] uppercase opacity-50" style={{ color: "var(--t3)" }}>
                   Email Address
                 </label>
-                <div className="relative">
-                  <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4" style={{ color: "var(--t3)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <div className="relative auth-input-focus group">
+                  <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 transition-colors group-focus-within:text-indigo-400" style={{ color: "var(--t3)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                   </svg>
                   <input id="auth-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com" disabled={submitting} className={inputCls} style={{ ...inputStyle, paddingLeft: 40 }}
-                    onFocus={(e) => { e.target.style.borderColor = "rgba(139,92,246,0.5)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.12), 0 8px 24px -8px rgba(99,102,241,0.15)"; }}
-                    onBlur={(e) => { e.target.style.borderColor = "rgba(129,140,248,0.15)"; e.target.style.boxShadow = "none"; }} />
+                    placeholder="you@example.com" disabled={submitting} className={inputCls} style={{ ...inputStyle, paddingLeft: 40 }} />
                 </div>
               </div>
 
-              <div style={{ animation: "stagger-fade-up 0.4s ease 0.1s both" }}>
-                <label htmlFor="auth-password" className="mb-1.5 block text-[10px] font-bold tracking-[0.15em] uppercase" style={{ color: "var(--t3)" }}>
+              <div style={{ animation: "stagger-fade-up 0.3s ease 0.1s both" }}>
+                <label htmlFor="auth-password" className="mb-1.5 block text-[10px] font-bold tracking-[0.2em] uppercase opacity-50" style={{ color: "var(--t3)" }}>
                   Password
                 </label>
-                <div className="relative">
-                  <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4" style={{ color: "var(--t3)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <div className="relative auth-input-focus group">
+                  <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 transition-colors group-focus-within:text-indigo-400" style={{ color: "var(--t3)" }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                   </svg>
                   <input id="auth-password" type={showPassword ? "text" : "password"} value={password}
                     onChange={(e) => setPassword(e.target.value)} placeholder={isSignUp ? "Min 6 characters" : "Your password"}
-                    disabled={submitting} className={inputCls} style={{ ...inputStyle, paddingLeft: 40, paddingRight: 44 }}
-                    onFocus={(e) => { e.target.style.borderColor = "rgba(139,92,246,0.5)"; e.target.style.boxShadow = "0 0 0 3px rgba(99,102,241,0.12), 0 8px 24px -8px rgba(99,102,241,0.15)"; }}
-                    onBlur={(e) => { e.target.style.borderColor = "rgba(129,140,248,0.15)"; e.target.style.boxShadow = "none"; }} />
+                    disabled={submitting} className={inputCls} style={{ ...inputStyle, paddingLeft: 40, paddingRight: 44 }} />
                   <button type="button" onClick={() => setShowPassword((v) => !v)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors" style={{ color: "var(--t3)" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#a5b4fc")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "var(--t3)")}>
+                    className="absolute right-3 top-1/2 -translate-y-1/2 transition-colors hover:text-indigo-300" style={{ color: "var(--t3)" }}>
                     {showPassword ? (
                       <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
@@ -273,13 +255,13 @@ export default function AuthPage() {
               )}
 
               <button type="submit" disabled={submitting}
-                className="gradient-btn w-full rounded-xl py-3 font-bold text-sm text-white relative overflow-hidden"
-                style={{ animation: "stagger-fade-up 0.4s ease 0.15s both" }}>
+                className="gradient-btn auth-btn-hover w-full rounded-xl py-3 font-bold text-sm text-white relative overflow-hidden"
+                style={{ animation: "stagger-fade-up 0.3s ease 0.15s both" }}>
                 <span className="absolute inset-0 pointer-events-none" style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent)", animation: "shimmer 3s ease infinite" }} />
                 {submitting ? (
                   <span className="flex items-center justify-center gap-2 relative z-10">
                     <span className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-                    {isSignUp ? "Creating account..." : "Signing in..."}
+                    {isSignUp ? "Creating..." : "Signing in..."}
                   </span>
                 ) : (
                   <span className="relative z-10">{isSignUp ? "Create Account" : "Sign In"}</span>
@@ -290,19 +272,17 @@ export default function AuthPage() {
         </div>
 
         {/* Toggle */}
-        <p className="mt-6 text-center text-sm" style={{ color: "var(--t2)", animation: "stagger-fade-up 0.4s ease 0.3s both" }}>
+        <p className="mt-6 text-center text-sm" style={{ color: "var(--t2)", animation: "stagger-fade-up 0.3s ease 0.25s both" }}>
           {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
           <button onClick={() => { setIsSignUp((v) => !v); setError(""); }}
-            className="font-bold transition-colors duration-200"
-            style={{ color: "#a5b4fc" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#c4b5fd")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#a5b4fc")}>
+            className="font-black transition-colors duration-200 hover:text-indigo-200"
+            style={{ color: "#a5b4fc" }}>
             {isSignUp ? "Sign In" : "Sign Up"}
           </button>
         </p>
 
         {/* Footer */}
-        <p className="mt-8 text-center text-[10px] tracking-wide" style={{ color: "var(--t3)", animation: "stagger-fade-up 0.4s ease 0.4s both" }}>
+        <p className="mt-8 text-center text-[10px] font-bold tracking-[0.2em] uppercase opacity-30" style={{ color: "var(--t3)", animation: "stagger-fade-up 0.3s ease 0.3s both" }}>
           Secured by Firebase · Powered by Omnix
         </p>
       </div>

@@ -4,12 +4,17 @@ import { useState, useEffect, useCallback, useRef } from "react";
 export function useSpeech() {
   const [voices, setVoices] = useState([]);
   const [speaking, setSpeaking] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   const synth = typeof window !== "undefined" ? window.speechSynthesis : null;
   const utteranceRef = useRef(null);
 
   // Load and filter high-quality voices
   useEffect(() => {
     if (!synth) return;
+
+    // Load initial mute state
+    const saved = localStorage.getItem("omnix_ai_muted");
+    if (saved === "true") setIsMuted(true);
 
     const loadVoices = () => {
       const allVoices = synth.getVoices();
@@ -21,6 +26,12 @@ export function useSpeech() {
 
     return () => synth.cancel();
   }, [synth]);
+
+  // Persist mute state
+  useEffect(() => {
+    localStorage.setItem("omnix_ai_muted", isMuted);
+    if (isMuted) synth?.cancel();
+  }, [isMuted, synth]);
 
   // 🌍 Accurate Language & Script Detection
   const detectLanguage = (text) => {
@@ -58,7 +69,7 @@ export function useSpeech() {
 
   const speak = useCallback(
     (rawText) => {
-      if (!synth || !rawText) return;
+      if (!synth || !rawText || isMuted) return;
 
       synth.cancel(); // Reset any existing speech
       const cleanedText = cleanTextForSpeech(rawText);
@@ -105,10 +116,10 @@ export function useSpeech() {
     if (typeof window === "undefined") return;
     try {
       synth?.cancel();
-    } catch {}
+    } catch { }
     setSpeaking(false);
   }, [synth]);
 
-  return { speak, detectLanguage, speaking, stop };
+  return { speak, detectLanguage, speaking, stop, isMuted, setIsMuted };
 
 }

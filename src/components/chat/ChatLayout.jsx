@@ -294,7 +294,7 @@ function WelcomeScreen({ onSend, user, onPinToTop }) {
    ═══════════════════════════════════════════════════════════════ */
 export default function ChatLayout() {
   const { messages, sendMessage, loading, resetChat, loadChat, stopGeneration, regenerateLastAssistant } = useChat();
-  const { speak } = useSpeech();
+  const { speak, isMuted, setIsMuted } = useSpeech();
   const { user, signOut } = useAuth();
   const bottomRef = useRef(null);
   const scrollRef = useRef(null);
@@ -561,7 +561,12 @@ export default function ChatLayout() {
       <div style={{ display: "flex", flexDirection: "column", flex: 1, minWidth: 0, minHeight: 0, height: "100%", position: "relative", zIndex: 1 }}>
 
         {/* Header */}
-        <ChatHeader onMenuToggle={() => setSidebarOpen(v => !v)} onNewChat={handleNewChat} />
+        <ChatHeader
+          onMenuToggle={() => setSidebarOpen(v => !v)}
+          onNewChat={handleNewChat}
+          isMuted={isMuted}
+          onToggleMute={() => setIsMuted(v => !v)}
+        />
 
         {/* Messages area — isolate stacking so animated content cannot paint over the header */}
         <div style={{ flex: 1, minHeight: 0, overflow: "hidden", position: "relative", zIndex: 0, isolation: "isolate" }}>
