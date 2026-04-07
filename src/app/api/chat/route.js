@@ -45,13 +45,9 @@ function isQuotaError(err) {
 function modelCandidates() {
   const fromEnv = process.env.GEMINI_MODEL?.trim();
   const defaults = [
-    "gemini-3-flash-preview",
-    "gemini-2.5-flash-preview",
-    "gemini-2.5-flash",
-    "gemini-1.5-flash",
-    "gemini-1.5-flash-8b",
-    "gemini-2.0-flash",
-    "gemini-2.0-flash-001",
+    "gemini-2.5-flash",   // ✅ best balance (recommended)
+    "gemini-1.5-flash",   // ✅ stable fallback
+    "gemini-2.0-flash"    // ✅ backup
   ];
   const list = fromEnv ? [fromEnv, ...defaults] : defaults;
   return [...new Set(list)];
