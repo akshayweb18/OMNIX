@@ -18,8 +18,8 @@ import {
 
 function timeAgo(ts) {
   const d = Date.now() - Number(ts);
-  if (d < 60000)    return "now";
-  if (d < 3600000)  return `${Math.floor(d / 60000)}m`;
+  if (d < 60000) return "now";
+  if (d < 3600000) return `${Math.floor(d / 60000)}m`;
   if (d < 86400000) return `${Math.floor(d / 3600000)}h`;
   return `${Math.floor(d / 86400000)}d`;
 }
@@ -27,17 +27,17 @@ function timeAgo(ts) {
 function groupSessions(sessions) {
   const now = Date.now(), DAY = 86400000;
   return {
-    today:     sessions.filter(s => now - Number(s.id) < DAY),
+    today: sessions.filter(s => now - Number(s.id) < DAY),
     yesterday: sessions.filter(s => { const a = now - Number(s.id); return a >= DAY && a < 2 * DAY; }),
-    older:     sessions.filter(s => now - Number(s.id) >= 2 * DAY),
+    older: sessions.filter(s => now - Number(s.id) >= 2 * DAY),
   };
 }
 
 const PROMPTS = [
-  { icon: "🚀", label: "Launch Plan",   text: "Help me create a product launch plan with timeline, milestones and KPIs.", accent: "#818cf8", bg: "linear-gradient(135deg, rgba(99,102,241,0.2), rgba(79,70,229,0.1))" },
-  { icon: "💡", label: "Explain AI",    text: "Explain how neural networks learn, in simple terms a student would understand.", accent: "#a78bfa", bg: "linear-gradient(135deg, rgba(167,139,250,0.2), rgba(139,92,246,0.1))" },
-  { icon: "🧬", label: "Write Code",    text: "Write a Python function to sort a list of dictionaries by a specific key.", accent: "#c084fc", bg: "linear-gradient(135deg, rgba(192,132,252,0.2), rgba(147,51,234,0.1))" },
-  { icon: "🌍", label: "Brainstorm",    text: "Give me 10 creative AI startup ideas with unique market angles.", accent: "#f0abfc", bg: "linear-gradient(135deg, rgba(240,171,252,0.2), rgba(192,38,211,0.1))" },
+  { icon: "🚀", label: "Launch Plan", text: "Help me create a product launch plan with timeline, milestones and KPIs.", accent: "#818cf8", bg: "linear-gradient(135deg, rgba(99,102,241,0.2), rgba(79,70,229,0.1))" },
+  { icon: "💡", label: "Explain AI", text: "Explain how neural networks learn, in simple terms a student would understand.", accent: "#a78bfa", bg: "linear-gradient(135deg, rgba(167,139,250,0.2), rgba(139,92,246,0.1))" },
+  { icon: "🧬", label: "Write Code", text: "Write a Python function to sort a list of dictionaries by a specific key.", accent: "#c084fc", bg: "linear-gradient(135deg, rgba(192,132,252,0.2), rgba(147,51,234,0.1))" },
+  { icon: "🌍", label: "Brainstorm", text: "Give me 10 creative AI startup ideas with unique market angles.", accent: "#f0abfc", bg: "linear-gradient(135deg, rgba(240,171,252,0.2), rgba(192,38,211,0.1))" },
 ];
 
 function getTimeGreeting() {
@@ -47,12 +47,12 @@ function getTimeGreeting() {
   return "Good evening";
 }
 
-const IconSearch = () => <svg style={{width:14,height:14}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><circle cx="11" cy="11" r="8"/><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35"/></svg>;
-const IconPlus = () => <svg style={{width:16,height:16}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>;
-const IconClose = () => <svg style={{width:14,height:14}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>;
-const IconMsg = () => <svg style={{width:12,height:12}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>;
-const IconBolt = () => <svg style={{width:14,height:14}} fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L10 22l9.5-12H14L13 2z"/></svg>;
-const IconLogout = () => <svg style={{width:16,height:16}} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" /></svg>;
+const IconSearch = () => <svg style={{ width: 14, height: 14 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><circle cx="11" cy="11" r="8" /><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35" /></svg>;
+const IconPlus = () => <svg style={{ width: 16, height: 16 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>;
+const IconClose = () => <svg style={{ width: 14, height: 14 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>;
+const IconMsg = () => <svg style={{ width: 12, height: 12 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>;
+const IconBolt = () => <svg style={{ width: 14, height: 14 }} fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L4.5 13.5H11L10 22l9.5-12H14L13 2z" /></svg>;
+const IconLogout = () => <svg style={{ width: 16, height: 16 }} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" /></svg>;
 
 /* ─── Session Group ────────────────────────────────────────── */
 function SessionGroup({ label, dotColor, sessions, activeChatId, onSelect, onDelete, onClose }) {
@@ -303,8 +303,8 @@ export default function ChatLayout() {
   const welcomeOpenedAt = useRef(0);
 
   const [activeChatId, setActiveChatId] = useState(null);
-  const [sessions, setSessions]         = useState([]);
-  const [sidebarOpen, setSidebarOpen]   = useState(false);
+  const [sessions, setSessions] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const isFirstMsg = useRef(true);
 
   useEffect(() => {
@@ -326,7 +326,7 @@ export default function ChatLayout() {
     }
     setActiveChatId(null);
     isFirstMsg.current = true;
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- scope load to Firebase uid only
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- scope load to Firebase uid only
   }, [user?.uid]);
 
   useEffect(() => {
@@ -505,7 +505,7 @@ export default function ChatLayout() {
     setActiveChatId(id);
     writeActiveChatId(user.uid, id);
     isFirstMsg.current = false;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessions, resetChat, loadChat, user?.uid]);
 
   const handleDeleteChat = useCallback((id) => {
@@ -529,7 +529,7 @@ export default function ChatLayout() {
       {/* Desktop sidebar (only shown >=1024px via media query class) */}
       <div className="omnix-desktop-sidebar" style={{ width: 272, flexShrink: 0, height: "100%" }}>
         <div className="glass-sidebar" style={{ height: "100%" }}>
-          <SidebarContent {...sp} onClose={() => {}} />
+          <SidebarContent {...sp} onClose={() => { }} />
         </div>
       </div>
 

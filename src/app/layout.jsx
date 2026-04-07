@@ -19,10 +19,11 @@ export const metadata = {
   applicationName: "OMNIX",
   icons: {
     icon: [
-      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+      { url: "/icons/favicon-96x96.png", type: "image/png" },
+      { url: "/icons/web-app-manifest-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/web-app-manifest-512x512.png", sizes: "512x512", type: "image/png" },
     ],
-    apple: "/icons/icon-192.png",
+    apple: "/icons/apple-touch-icon.png",
   },
   appleWebApp: {
     capable: true,

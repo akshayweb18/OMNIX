@@ -1,3 +1,4 @@
-[00:00:27.042] Server  LOG     ✓ Ready in 24.2s
-[00:02:21.087] Server  LOG     ○ Compiling /manifest.webmanifest ...
-[00:02:21.546] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:04.840] Server  LOG     ✓ Ready in 2.8s
+[00:01:21.359] Server  LOG     ○ Compiling / ...
+[00:01:28.906] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:23.972] Server  LOG     ✓ Compiled in 1122ms

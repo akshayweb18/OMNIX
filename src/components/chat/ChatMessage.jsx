@@ -6,23 +6,23 @@ import remarkGfm from "remark-gfm";
 import GalaxyLogo from "@/components/ui/GalaxyLogo";
 
 const LANG_COLORS = {
-  javascript:"#f7df1e", js:"#f7df1e", typescript:"#3178c6", ts:"#3178c6",
-  python:"#3776ab", py:"#3776ab", css:"#1572b6", html:"#e34f26",
-  json:"#8bc34a", bash:"#4eaa25", shell:"#4eaa25", sql:"#f29111",
-  rust:"#ce422b", go:"#00add8", java:"#ed8b00", ruby:"#cc342d",
-  swift:"#f05138", kotlin:"#7f52ff", php:"#777bb4", yaml:"#cb171e",
-  dockerfile:"#0db7ed", graphql:"#e10098",
+  javascript: "#f7df1e", js: "#f7df1e", typescript: "#3178c6", ts: "#3178c6",
+  python: "#3776ab", py: "#3776ab", css: "#1572b6", html: "#e34f26",
+  json: "#8bc34a", bash: "#4eaa25", shell: "#4eaa25", sql: "#f29111",
+  rust: "#ce422b", go: "#00add8", java: "#ed8b00", ruby: "#cc342d",
+  swift: "#f05138", kotlin: "#7f52ff", php: "#777bb4", yaml: "#cb171e",
+  dockerfile: "#0db7ed", graphql: "#e10098",
 };
 
 function CopyBtn({ text, label = "Copy" }) {
   const [copied, setCopied] = useState(false);
-  const go = () => { navigator.clipboard.writeText(text).catch(() => {}); setCopied(true); setTimeout(() => setCopied(false), 1800); };
+  const go = () => { navigator.clipboard.writeText(text).catch(() => { }); setCopied(true); setTimeout(() => setCopied(false), 1800); };
   return (
     <button onClick={go} className={`copy-btn ${copied ? "copy-btn-done" : ""}`}>
       {copied ? (
-        <><svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg> Copied</>
+        <><svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg> Copied</>
       ) : (
-        <><svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9.75a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184"/></svg> {label}</>
+        <><svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9.75a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" /></svg> {label}</>
       )}
     </button>
   );
@@ -76,9 +76,9 @@ function ActionBtn({ icon, label, onClick, active, activeColor = "#22d3ee", disa
   );
 }
 
-const ThumbUp   = () => <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>;
-const ThumbDown = () => <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018c.163 0 .326.02.485.06L17 4m-7 10v2a2 2 0 002 2h.095c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"/></svg>;
-const Regen     = () => <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/></svg>;
+const ThumbUp = () => <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" /></svg>;
+const ThumbDown = () => <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018c.163 0 .326.02.485.06L17 4m-7 10v2a2 2 0 002 2h.095c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5" /></svg>;
+const Regen = () => <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>;
 
 export default function ChatMessage({ message, user, isLastInThread, loading, isStreaming, onRegenerate }) {
   const isUser = message.role === "user";
@@ -146,20 +146,20 @@ export default function ChatMessage({ message, user, isLastInThread, loading, is
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
                   components={{
-                    p:          ({ children }) => <div className="mb-[0.6em] last:mb-0">{children}</div>,
-                    ul:         ({ children }) => <ul>{children}</ul>,
-                    ol:         ({ children }) => <ol>{children}</ol>,
-                    li:         ({ children }) => <li>{children}</li>,
-                    strong:     ({ children }) => <strong>{children}</strong>,
-                    em:         ({ children }) => <em>{children}</em>,
+                    p: ({ children }) => <div className="mb-[0.6em] last:mb-0">{children}</div>,
+                    ul: ({ children }) => <ul>{children}</ul>,
+                    ol: ({ children }) => <ol>{children}</ol>,
+                    li: ({ children }) => <li>{children}</li>,
+                    strong: ({ children }) => <strong>{children}</strong>,
+                    em: ({ children }) => <em>{children}</em>,
                     blockquote: ({ children }) => <blockquote>{children}</blockquote>,
-                    h1:         ({ children }) => <h1>{children}</h1>,
-                    h2:         ({ children }) => <h2>{children}</h2>,
-                    h3:         ({ children }) => <h3>{children}</h3>,
-                    a:          ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>,
-                    table:      ({ children }) => <div className="overflow-x-auto my-3"><table>{children}</table></div>,
-                    th:         ({ children }) => <th>{children}</th>,
-                    td:         ({ children }) => <td>{children}</td>,
+                    h1: ({ children }) => <h1>{children}</h1>,
+                    h2: ({ children }) => <h2>{children}</h2>,
+                    h3: ({ children }) => <h3>{children}</h3>,
+                    a: ({ href, children }) => <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>,
+                    table: ({ children }) => <div className="overflow-x-auto my-3"><table>{children}</table></div>,
+                    th: ({ children }) => <th>{children}</th>,
+                    td: ({ children }) => <td>{children}</td>,
                     code({ inline, className, children }) {
                       return inline
                         ? <code style={{ background: "rgba(99,102,241,0.14)", color: "#c4b5fd", border: "1px solid rgba(99,102,241,0.22)", borderRadius: 6, padding: "2px 7px", fontSize: "0.87em", fontFamily: "var(--font-geist-mono,'Fira Code',monospace)" }}>{children}</code>
